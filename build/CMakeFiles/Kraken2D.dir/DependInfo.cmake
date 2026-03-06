@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "D:/Progams/Kraken2D/src/core/Engine.cpp" "CMakeFiles/Kraken2D.dir/src/core/Engine.cpp.obj" "gcc" "CMakeFiles/Kraken2D.dir/src/core/Engine.cpp.obj.d"
   "D:/Progams/Kraken2D/src/main.cpp" "CMakeFiles/Kraken2D.dir/src/main.cpp.obj" "gcc" "CMakeFiles/Kraken2D.dir/src/main.cpp.obj.d"
   )
 

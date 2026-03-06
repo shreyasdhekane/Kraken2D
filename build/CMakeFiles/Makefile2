@@ -84,12 +84,12 @@ clean: CMakeFiles/Kraken2D.dir/clean
 CMakeFiles/Kraken2D.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Kraken2D.dir\build.make CMakeFiles/Kraken2D.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Kraken2D.dir\build.make CMakeFiles/Kraken2D.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=D:\Progams\Kraken2D\build\CMakeFiles --progress-num=1,2 "Built target Kraken2D"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=D:\Progams\Kraken2D\build\CMakeFiles --progress-num=1,2,3 "Built target Kraken2D"
 .PHONY : CMakeFiles/Kraken2D.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Kraken2D.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\Progams\Kraken2D\build\CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\Progams\Kraken2D\build\CMakeFiles 3
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/Kraken2D.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start D:\Progams\Kraken2D\build\CMakeFiles 0
 .PHONY : CMakeFiles/Kraken2D.dir/rule
@@ -101,7 +101,7 @@ Kraken2D: CMakeFiles/Kraken2D.dir/rule
 # codegen rule for target.
 CMakeFiles/Kraken2D.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Kraken2D.dir\build.make CMakeFiles/Kraken2D.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=D:\Progams\Kraken2D\build\CMakeFiles --progress-num=1,2 "Finished codegen for target Kraken2D"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=D:\Progams\Kraken2D\build\CMakeFiles --progress-num=1,2,3 "Finished codegen for target Kraken2D"
 .PHONY : CMakeFiles/Kraken2D.dir/codegen
 
 # clean rule for target.
