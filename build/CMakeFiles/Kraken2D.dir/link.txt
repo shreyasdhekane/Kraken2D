@@ -1,0 +1,3 @@
+"C:\Program Files\mingw64\bin\cmake.exe" -E rm -f CMakeFiles\Kraken2D.dir/objects.a
+C:\PROGRA~1\mingw64\bin\ar.exe qc CMakeFiles\Kraken2D.dir/objects.a @CMakeFiles\Kraken2D.dir\objects1.rsp
+C:\PROGRA~1\mingw64\bin\C__~1.EXE -Wl,--whole-archive CMakeFiles\Kraken2D.dir/objects.a -Wl,--no-whole-archive -o Kraken2D.exe -Wl,--out-implib,libKraken2D.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\Kraken2D.dir\linkLibs.rsp
