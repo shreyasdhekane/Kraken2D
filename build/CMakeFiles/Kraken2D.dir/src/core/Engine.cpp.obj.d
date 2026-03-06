@@ -185,14 +185,73 @@ CMakeFiles/Kraken2D.dir/src/core/Engine.cpp.obj: \
  C:/SDL2/include/SDL2/SDL_shape.h C:/SDL2/include/SDL2/SDL_system.h \
  C:/SDL2/include/SDL2/SDL_timer.h C:/SDL2/include/SDL2/SDL_version.h \
  C:/SDL2/include/SDL2/SDL_locale.h C:/SDL2/include/SDL2/SDL_misc.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/iostream \
+ D:/Progams/Kraken2D/src/ecs/EntityManager.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/cstdint \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/queue \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/requires_hosted.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/version.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/deque \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_algobase.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/functexcept.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/exception_defines.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/cpp_type_traits.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/type_traits \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/ext/type_traits.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/ext/numeric_traits.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_pair.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/move.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/utility.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_iterator_base_types.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_iterator_base_funcs.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/concept_check.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/debug/assertions.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_iterator.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/ptr_traits.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/debug/debug.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/predefined_ops.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bit \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/concepts \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/allocator.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/x86_64-w64-mingw32/bits/c++allocator.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/new_allocator.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/new \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/exception.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/memoryfwd.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_construct.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_uninitialized.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/ext/alloc_traits.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/alloc_traits.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_deque.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/initializer_list \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/refwrap.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/invoke.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_function.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/backward/binders.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/range_access.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/deque.tcc \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/memory_resource.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/cstddef \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/uses_allocator.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/uses_allocator_args.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/tuple \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/vector \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_vector.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_bvector.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/functional_hash.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/hash_bytes.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/vector.tcc \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_heap.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_queue.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/array \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/compare \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/cassert \
+ C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/assert.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/iostream \
  C:/Program\ Files/mingw64/include/c++/15.2.0/ostream \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/ostream.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/ios \
  C:/Program\ Files/mingw64/include/c++/15.2.0/iosfwd \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stringfwd.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/memoryfwd.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/postypes.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/cwchar \
  C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/wchar.h \
@@ -202,16 +261,9 @@ CMakeFiles/Kraken2D.dir/src/core/Engine.cpp.obj: \
  C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/swprintf.inl \
  C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/sec_api/wchar_s.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/exception \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/exception.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/version.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/exception_ptr.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/exception_defines.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/cxxabi_init_exception.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/typeinfo \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/hash_bytes.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/new \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/move.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/type_traits \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/nested_exception.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/char_traits.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/localefwd.h \
@@ -240,51 +292,16 @@ CMakeFiles/Kraken2D.dir/src/core/Engine.cpp.obj: \
  C:/Program\ Files/mingw64/include/c++/15.2.0/x86_64-w64-mingw32/bits/atomic_word.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/locale_classes.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/string \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/allocator.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/x86_64-w64-mingw32/bits/c++allocator.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/new_allocator.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/functexcept.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/cpp_type_traits.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/ostream_insert.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/cxxabi_forced.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_iterator_base_funcs.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/concept_check.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/debug/assertions.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_iterator_base_types.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_iterator.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/ext/type_traits.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/ptr_traits.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_function.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/backward/binders.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/ext/numeric_traits.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_algobase.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_pair.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/utility.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/debug/debug.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/predefined_ops.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bit \
- C:/Program\ Files/mingw64/include/c++/15.2.0/concepts \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/refwrap.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/invoke.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/range_access.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/initializer_list \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/basic_string.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/ext/alloc_traits.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/alloc_traits.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_construct.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/string_view \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/functional_hash.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/string_view.tcc \
  C:/Program\ Files/mingw64/include/c++/15.2.0/ext/string_conversions.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/cstdio \
  C:/Program\ Files/mingw64/include/c++/15.2.0/cerrno \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/charconv.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/basic_string.tcc \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/memory_resource.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/cstddef \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/uses_allocator.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/uses_allocator_args.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/tuple \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/locale_classes.tcc \
  C:/Program\ Files/mingw64/include/c++/15.2.0/system_error \
  C:/Program\ Files/mingw64/include/c++/15.2.0/x86_64-w64-mingw32/bits/error_constants.h \
