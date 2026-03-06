@@ -185,6 +185,8 @@ CMakeFiles/Kraken2D.dir/src/core/Engine.cpp.obj: \
  C:/SDL2/include/SDL2/SDL_shape.h C:/SDL2/include/SDL2/SDL_system.h \
  C:/SDL2/include/SDL2/SDL_timer.h C:/SDL2/include/SDL2/SDL_version.h \
  C:/SDL2/include/SDL2/SDL_locale.h C:/SDL2/include/SDL2/SDL_misc.h \
+ D:/Progams/Kraken2D/src/ecs/ComponentManager.h \
+ D:/Progams/Kraken2D/src/ecs/ComponentArray.h \
  D:/Progams/Kraken2D/src/ecs/EntityManager.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/cstdint \
  C:/Program\ Files/mingw64/include/c++/15.2.0/queue \
@@ -246,10 +248,20 @@ CMakeFiles/Kraken2D.dir/src/core/Engine.cpp.obj: \
  C:/Program\ Files/mingw64/include/c++/15.2.0/compare \
  C:/Program\ Files/mingw64/include/c++/15.2.0/cassert \
  C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/assert.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/iostream \
- C:/Program\ Files/mingw64/include/c++/15.2.0/ostream \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/ostream.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/ios \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/unordered_map \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/unordered_map.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/hashtable.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/hashtable_policy.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/ext/aligned_buffer.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/enable_special_members.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/node_handle.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/erase_if.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/memory \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_tempbuf.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_raw_storage_iter.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/align.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/unique_ptr.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/shared_ptr.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/iosfwd \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stringfwd.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/postypes.h \
@@ -260,21 +272,9 @@ CMakeFiles/Kraken2D.dir/src/core/Engine.cpp.obj: \
  C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/_mingw_stat64.h \
  C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/swprintf.inl \
  C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/sec_api/wchar_s.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/exception \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/exception_ptr.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/cxxabi_init_exception.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/shared_ptr_base.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/typeinfo \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/nested_exception.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/char_traits.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/localefwd.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/x86_64-w64-mingw32/bits/c++locale.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/clocale \
- C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/locale.h \
- C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/stdio.h \
- C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/sec_api/stdio_s.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/cctype \
- C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/ctype.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/ios_base.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/allocated_ptr.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/ext/atomicity.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/x86_64-w64-mingw32/bits/gthr.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/x86_64-w64-mingw32/bits/gthr-default.h \
@@ -290,6 +290,33 @@ CMakeFiles/Kraken2D.dir/src/core/Engine.cpp.obj: \
  C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/sched.h \
  C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/pthread_unistd.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/x86_64-w64-mingw32/bits/atomic_word.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/ext/concurrence.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/exception \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/exception_ptr.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/cxxabi_init_exception.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/nested_exception.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/shared_ptr_atomic.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/atomic_base.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/atomic_lockfree_defines.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/backward/auto_ptr.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/pstl/glue_memory_defs.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/pstl/execution_defs.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/typeindex \
+ D:/Progams/Kraken2D/src/ecs/Components.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/iostream \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/ostream \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/ostream.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/ios \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/char_traits.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/localefwd.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/x86_64-w64-mingw32/bits/c++locale.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/clocale \
+ C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/locale.h \
+ C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/stdio.h \
+ C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/sec_api/stdio_s.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/cctype \
+ C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/ctype.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/ios_base.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/locale_classes.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/string \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/ostream_insert.h \
