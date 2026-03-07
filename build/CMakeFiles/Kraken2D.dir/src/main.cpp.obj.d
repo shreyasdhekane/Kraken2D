@@ -303,9 +303,8 @@ CMakeFiles/Kraken2D.dir/src/main.cpp.obj: \
  C:/Program\ Files/mingw64/include/c++/15.2.0/pstl/execution_defs.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/typeindex \
  D:/Progams/Kraken2D/src/ecs/Components.h \
- D:/Progams/Kraken2D/src/physics/PhysicsSystem.h \
- D:/Progams/Kraken2D/src/physics/Physics.h \
  D:/Progams/Kraken2D/src/ecs/Systems.h \
+ D:/Progams/Kraken2D/src/physics/PhysicsSystem.h \
  D:/Progams/Kraken2D/src/physics/CollisionSystem.h \
  D:/Progams/Kraken2D/src/physics/SpatialGrid.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/algorithm \
