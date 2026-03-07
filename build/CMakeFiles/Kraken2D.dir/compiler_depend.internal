@@ -374,6 +374,9 @@ CMakeFiles/Kraken2D.dir/src/core/Engine.cpp.obj
  D:/Progams/Kraken2D/src/ecs/Components.h
  D:/Progams/Kraken2D/src/ecs/EntityManager.h
  D:/Progams/Kraken2D/src/ecs/Systems.h
+ D:/Progams/Kraken2D/src/physics/CollisionSystem.h
+ D:/Progams/Kraken2D/src/physics/Physics.h
+ D:/Progams/Kraken2D/src/physics/PhysicsSystem.h
  D:/Progams/Kraken2D/src/core/Engine.h
 
 CMakeFiles/Kraken2D.dir/src/main.cpp.obj
@@ -705,5 +708,8 @@ CMakeFiles/Kraken2D.dir/src/main.cpp.obj
  D:/Progams/Kraken2D/src/ecs/Components.h
  D:/Progams/Kraken2D/src/ecs/EntityManager.h
  D:/Progams/Kraken2D/src/ecs/Systems.h
+ D:/Progams/Kraken2D/src/physics/CollisionSystem.h
+ D:/Progams/Kraken2D/src/physics/Physics.h
+ D:/Progams/Kraken2D/src/physics/PhysicsSystem.h
  D:/Progams/Kraken2D/src/core/Engine.h
 

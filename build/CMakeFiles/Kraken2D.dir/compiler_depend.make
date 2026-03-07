@@ -373,6 +373,9 @@ CMakeFiles/Kraken2D.dir/src/core/Engine.cpp.obj: D:/Progams/Kraken2D/src/core/En
   D:/Progams/Kraken2D/src/ecs/Components.h \
   D:/Progams/Kraken2D/src/ecs/EntityManager.h \
   D:/Progams/Kraken2D/src/ecs/Systems.h \
+  D:/Progams/Kraken2D/src/physics/CollisionSystem.h \
+  D:/Progams/Kraken2D/src/physics/Physics.h \
+  D:/Progams/Kraken2D/src/physics/PhysicsSystem.h \
   D:/Progams/Kraken2D/src/core/Engine.h
 
 CMakeFiles/Kraken2D.dir/src/main.cpp.obj: D:/Progams/Kraken2D/src/main.cpp \
@@ -703,12 +706,17 @@ CMakeFiles/Kraken2D.dir/src/main.cpp.obj: D:/Progams/Kraken2D/src/main.cpp \
   D:/Progams/Kraken2D/src/ecs/Components.h \
   D:/Progams/Kraken2D/src/ecs/EntityManager.h \
   D:/Progams/Kraken2D/src/ecs/Systems.h \
+  D:/Progams/Kraken2D/src/physics/CollisionSystem.h \
+  D:/Progams/Kraken2D/src/physics/Physics.h \
+  D:/Progams/Kraken2D/src/physics/PhysicsSystem.h \
   D:/Progams/Kraken2D/src/core/Engine.h
 
 
 D:/Progams/Kraken2D/src/main.cpp:
 
 D:/Progams/Kraken2D/src/core/Engine.h:
+
+D:/Progams/Kraken2D/src/physics/CollisionSystem.h:
 
 D:/Progams/Kraken2D/src/ecs/Systems.h:
 
@@ -1148,6 +1156,8 @@ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/cxxabi_forced.h:
 
 C:/Program\ Files/mingw64/include/c++/15.2.0/x86_64-w64-mingw32/bits/ctype_base.h:
 
+D:/Progams/Kraken2D/src/physics/Physics.h:
+
 C:/Program\ Files/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/avxifmaintrin.h:
 
 C:/Program\ Files/mingw64/include/c++/15.2.0/concepts:
@@ -1377,6 +1387,8 @@ C:/SDL2/include/SDL2/SDL_clipboard.h:
 C:/Program\ Files/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/avxvnniint8intrin.h:
 
 C:/Program\ Files/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/immintrin.h:
+
+D:/Progams/Kraken2D/src/physics/PhysicsSystem.h:
 
 C:/SDL2/include/SDL2/SDL_cpuinfo.h:
 
