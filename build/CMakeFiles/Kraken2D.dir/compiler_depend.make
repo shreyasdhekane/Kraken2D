@@ -85,6 +85,7 @@ CMakeFiles/Kraken2D.dir/src/core/Engine.cpp.obj: D:/Progams/Kraken2D/src/core/En
   C:/Program\ Files/mingw64/include/c++/15.2.0/bits/uniform_int_dist.h \
   C:/Program\ Files/mingw64/include/c++/15.2.0/bits/unique_ptr.h \
   C:/Program\ Files/mingw64/include/c++/15.2.0/bits/unordered_map.h \
+  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/unordered_set.h \
   C:/Program\ Files/mingw64/include/c++/15.2.0/bits/uses_allocator.h \
   C:/Program\ Files/mingw64/include/c++/15.2.0/bits/uses_allocator_args.h \
   C:/Program\ Files/mingw64/include/c++/15.2.0/bits/utility.h \
@@ -137,6 +138,7 @@ CMakeFiles/Kraken2D.dir/src/core/Engine.cpp.obj: D:/Progams/Kraken2D/src/core/En
   C:/Program\ Files/mingw64/include/c++/15.2.0/typeindex \
   C:/Program\ Files/mingw64/include/c++/15.2.0/typeinfo \
   C:/Program\ Files/mingw64/include/c++/15.2.0/unordered_map \
+  C:/Program\ Files/mingw64/include/c++/15.2.0/unordered_set \
   C:/Program\ Files/mingw64/include/c++/15.2.0/vector \
   C:/Program\ Files/mingw64/include/c++/15.2.0/x86_64-w64-mingw32/bits/atomic_word.h \
   C:/Program\ Files/mingw64/include/c++/15.2.0/x86_64-w64-mingw32/bits/c++allocator.h \
@@ -381,6 +383,7 @@ CMakeFiles/Kraken2D.dir/src/core/Engine.cpp.obj: D:/Progams/Kraken2D/src/core/En
   D:/Progams/Kraken2D/src/physics/CollisionSystem.h \
   D:/Progams/Kraken2D/src/physics/Physics.h \
   D:/Progams/Kraken2D/src/physics/PhysicsSystem.h \
+  D:/Progams/Kraken2D/src/physics/SpatialGrid.h \
   D:/Progams/Kraken2D/src/core/Engine.h
 
 CMakeFiles/Kraken2D.dir/src/main.cpp.obj: D:/Progams/Kraken2D/src/main.cpp \
@@ -447,6 +450,7 @@ CMakeFiles/Kraken2D.dir/src/main.cpp.obj: D:/Progams/Kraken2D/src/main.cpp \
   C:/Program\ Files/mingw64/include/c++/15.2.0/bits/uniform_int_dist.h \
   C:/Program\ Files/mingw64/include/c++/15.2.0/bits/unique_ptr.h \
   C:/Program\ Files/mingw64/include/c++/15.2.0/bits/unordered_map.h \
+  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/unordered_set.h \
   C:/Program\ Files/mingw64/include/c++/15.2.0/bits/uses_allocator.h \
   C:/Program\ Files/mingw64/include/c++/15.2.0/bits/uses_allocator_args.h \
   C:/Program\ Files/mingw64/include/c++/15.2.0/bits/utility.h \
@@ -484,6 +488,7 @@ CMakeFiles/Kraken2D.dir/src/main.cpp.obj: D:/Progams/Kraken2D/src/main.cpp \
   C:/Program\ Files/mingw64/include/c++/15.2.0/typeindex \
   C:/Program\ Files/mingw64/include/c++/15.2.0/typeinfo \
   C:/Program\ Files/mingw64/include/c++/15.2.0/unordered_map \
+  C:/Program\ Files/mingw64/include/c++/15.2.0/unordered_set \
   C:/Program\ Files/mingw64/include/c++/15.2.0/vector \
   C:/Program\ Files/mingw64/include/c++/15.2.0/x86_64-w64-mingw32/bits/atomic_word.h \
   C:/Program\ Files/mingw64/include/c++/15.2.0/x86_64-w64-mingw32/bits/c++allocator.h \
@@ -719,12 +724,15 @@ CMakeFiles/Kraken2D.dir/src/main.cpp.obj: D:/Progams/Kraken2D/src/main.cpp \
   D:/Progams/Kraken2D/src/physics/CollisionSystem.h \
   D:/Progams/Kraken2D/src/physics/Physics.h \
   D:/Progams/Kraken2D/src/physics/PhysicsSystem.h \
+  D:/Progams/Kraken2D/src/physics/SpatialGrid.h \
   D:/Progams/Kraken2D/src/core/Engine.h
 
 
 D:/Progams/Kraken2D/src/main.cpp:
 
 D:/Progams/Kraken2D/src/core/Engine.h:
+
+D:/Progams/Kraken2D/src/physics/SpatialGrid.h:
 
 D:/Progams/Kraken2D/src/physics/CollisionSystem.h:
 
@@ -918,8 +926,6 @@ C:/Program\ Files/mingw64/include/c++/15.2.0/ios:
 
 C:/Program\ Files/mingw64/include/c++/15.2.0/bits/requires_hosted.h:
 
-C:/Program\ Files/mingw64/include/c++/15.2.0/string_view:
-
 C:/Program\ Files/mingw64/include/c++/15.2.0/ext/string_conversions.h:
 
 C:/Program\ Files/mingw64/include/c++/15.2.0/debug/debug.h:
@@ -970,6 +976,8 @@ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/string_view.tcc:
 
 C:/Program\ Files/mingw64/include/c++/15.2.0/ext/type_traits.h:
 
+C:/Program\ Files/mingw64/include/c++/15.2.0/bits/unordered_set.h:
+
 C:/Program\ Files/mingw64/include/c++/15.2.0/bits/streambuf.tcc:
 
 C:/Program\ Files/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/cldemoteintrin.h:
@@ -991,10 +999,6 @@ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/streambuf_iterator.h:
 C:/Program\ Files/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stdint.h:
 
 C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_queue.h:
-
-C:/Program\ Files/mingw64/include/c++/15.2.0/stdlib.h:
-
-C:/Program\ Files/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/amxtileintrin.h:
 
 C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_iterator_base_funcs.h:
 
@@ -1084,6 +1088,10 @@ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_iterator_base_types.h:
 
 C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_algo.h:
 
+C:/Program\ Files/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/uintrintrin.h:
+
+C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_iterator.h:
+
 C:/Program\ Files/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/sgxintrin.h:
 
 C:/Program\ Files/mingw64/include/c++/15.2.0/bits/deque.tcc:
@@ -1111,6 +1119,10 @@ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/locale_classes.tcc:
 C:/Program\ Files/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/avxneconvertintrin.h:
 
 C:/Program\ Files/mingw64/include/c++/15.2.0/algorithm:
+
+C:/Program\ Files/mingw64/include/c++/15.2.0/string_view:
+
+C:/Program\ Files/mingw64/include/c++/15.2.0/unordered_set:
 
 C:/Program\ Files/mingw64/include/c++/15.2.0/bits/std_abs.h:
 
@@ -1300,6 +1312,10 @@ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/basic_ios.tcc:
 
 C:/Program\ Files/mingw64/include/c++/15.2.0/bits/ostream_insert.h:
 
+C:/Program\ Files/mingw64/include/c++/15.2.0/stdlib.h:
+
+C:/Program\ Files/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/amxtileintrin.h:
+
 C:/Program\ Files/mingw64/include/c++/15.2.0/streambuf:
 
 C:/Program\ Files/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/amxmovrsintrin.h:
@@ -1481,7 +1497,3 @@ C:/Program\ Files/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/tbmintrin.h:
 C:/Program\ Files/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/sha512intrin.h:
 
 C:/Program\ Files/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/tmmintrin.h:
-
-C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_iterator.h:
-
-C:/Program\ Files/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/uintrintrin.h:
