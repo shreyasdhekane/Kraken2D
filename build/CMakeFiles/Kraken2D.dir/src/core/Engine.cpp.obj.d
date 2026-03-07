@@ -185,13 +185,18 @@ CMakeFiles/Kraken2D.dir/src/core/Engine.cpp.obj: \
  C:/SDL2/include/SDL2/SDL_shape.h C:/SDL2/include/SDL2/SDL_system.h \
  C:/SDL2/include/SDL2/SDL_timer.h C:/SDL2/include/SDL2/SDL_version.h \
  C:/SDL2/include/SDL2/SDL_locale.h C:/SDL2/include/SDL2/SDL_misc.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/vector \
+ D:\Progams\Kraken2D\src\core\SceneManager.h \
+ D:\Progams\Kraken2D\src\core\Scene.h \
+ D:/Progams/Kraken2D/src/ecs/EntityManager.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/cstdint \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/queue \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/requires_hosted.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/version.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/deque \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_algobase.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/functexcept.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/exception_defines.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/cpp_type_traits.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/version.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/type_traits \
  C:/Program\ Files/mingw64/include/c++/15.2.0/ext/type_traits.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/ext/numeric_traits.h \
@@ -218,28 +223,25 @@ CMakeFiles/Kraken2D.dir/src/core/Engine.cpp.obj: \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_uninitialized.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/ext/alloc_traits.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/alloc_traits.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_vector.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_deque.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/initializer_list \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_bvector.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/functional_hash.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/hash_bytes.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/refwrap.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/invoke.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_function.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/backward/binders.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/range_access.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/vector.tcc \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/deque.tcc \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/memory_resource.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/cstddef \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/uses_allocator.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/uses_allocator_args.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/tuple \
- D:/Progams/Kraken2D/src/ecs/EntityManager.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/cstdint \
- C:/Program\ Files/mingw64/include/c++/15.2.0/queue \
- C:/Program\ Files/mingw64/include/c++/15.2.0/deque \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_deque.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/deque.tcc \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/vector \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_vector.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_bvector.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/functional_hash.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/hash_bytes.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/vector.tcc \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_heap.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_queue.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/array \
@@ -303,21 +305,7 @@ CMakeFiles/Kraken2D.dir/src/core/Engine.cpp.obj: \
  C:/Program\ Files/mingw64/include/c++/15.2.0/pstl/execution_defs.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/typeindex \
  D:/Progams/Kraken2D/src/ecs/Components.h \
- D:/Progams/Kraken2D/src/ecs/Systems.h \
- D:/Progams/Kraken2D/src/physics/PhysicsSystem.h \
- D:/Progams/Kraken2D/src/physics/CollisionSystem.h \
- D:/Progams/Kraken2D/src/physics/SpatialGrid.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/algorithm \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_algo.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/algorithmfwd.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/uniform_int_dist.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/pstl/glue_algorithm_defs.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/unordered_set \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/unordered_set.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/iostream \
- C:/Program\ Files/mingw64/include/c++/15.2.0/ostream \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/ostream.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/ios \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/string \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/char_traits.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/localefwd.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/x86_64-w64-mingw32/bits/c++locale.h \
@@ -327,9 +315,6 @@ CMakeFiles/Kraken2D.dir/src/core/Engine.cpp.obj: \
  C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/sec_api/stdio_s.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/cctype \
  C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/ctype.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/ios_base.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/locale_classes.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/string \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/ostream_insert.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/cxxabi_forced.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/basic_string.h \
@@ -340,6 +325,12 @@ CMakeFiles/Kraken2D.dir/src/core/Engine.cpp.obj: \
  C:/Program\ Files/mingw64/include/c++/15.2.0/cerrno \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/charconv.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/basic_string.tcc \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/iostream \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/ostream \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/ostream.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/ios \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/ios_base.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/locale_classes.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/locale_classes.tcc \
  C:/Program\ Files/mingw64/include/c++/15.2.0/system_error \
  C:/Program\ Files/mingw64/include/c++/15.2.0/x86_64-w64-mingw32/bits/error_constants.h \
@@ -357,4 +348,17 @@ CMakeFiles/Kraken2D.dir/src/core/Engine.cpp.obj: \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/basic_ios.tcc \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/ostream.tcc \
  C:/Program\ Files/mingw64/include/c++/15.2.0/istream \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/istream.tcc
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/istream.tcc \
+ D:/Progams/Kraken2D/src/scenes/MenuScene.h \
+ D:/Progams/Kraken2D/src/scenes/GameScene.h \
+ D:/Progams/Kraken2D/src/ecs/Systems.h \
+ D:/Progams/Kraken2D/src/physics/PhysicsSystem.h \
+ D:/Progams/Kraken2D/src/physics/CollisionSystem.h \
+ D:/Progams/Kraken2D/src/physics/SpatialGrid.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/algorithm \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_algo.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/algorithmfwd.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/uniform_int_dist.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/pstl/glue_algorithm_defs.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/unordered_set \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/unordered_set.h
