@@ -306,4 +306,9 @@ CMakeFiles/Kraken2D.dir/src/main.cpp.obj: \
  D:/Progams/Kraken2D/src/physics/PhysicsSystem.h \
  D:/Progams/Kraken2D/src/physics/Physics.h \
  D:/Progams/Kraken2D/src/ecs/Systems.h \
- D:/Progams/Kraken2D/src/physics/CollisionSystem.h
+ D:/Progams/Kraken2D/src/physics/CollisionSystem.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/algorithm \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_algo.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/algorithmfwd.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/uniform_int_dist.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/pstl/glue_algorithm_defs.h
