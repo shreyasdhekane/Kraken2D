@@ -375,6 +375,7 @@ CMakeFiles/Kraken2D.dir/src/core/Engine.cpp.obj: D:/Progams/Kraken2D/src/core/En
   C:/SDL2/include/SDL2/SDL_video.h \
   C:/SDL2/include/SDL2/begin_code.h \
   C:/SDL2/include/SDL2/close_code.h \
+  D:/Progams/Kraken2D/src/core/Camera.h \
   D:/Progams/Kraken2D/src/ecs/ComponentArray.h \
   D:/Progams/Kraken2D/src/ecs/ComponentManager.h \
   D:/Progams/Kraken2D/src/ecs/Components.h \
@@ -1012,6 +1013,8 @@ C:/Program\ Files/mingw64/include/c++/15.2.0/ext/alloc_traits.h:
 C:/Program\ Files/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/avx10_2-512mediaintrin.h:
 
 C:/Program\ Files/mingw64/include/c++/15.2.0/bits/string_view.tcc:
+
+D:/Progams/Kraken2D/src/core/Camera.h:
 
 C:/Program\ Files/mingw64/include/c++/15.2.0/ext/type_traits.h:
 

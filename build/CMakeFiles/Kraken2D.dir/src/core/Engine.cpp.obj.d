@@ -351,8 +351,8 @@ CMakeFiles/Kraken2D.dir/src/core/Engine.cpp.obj: \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/istream.tcc \
  D:/Progams/Kraken2D/src/scenes/MenuScene.h \
  D:/Progams/Kraken2D/src/scenes/GameScene.h \
+ D:/Progams/Kraken2D/src/core/Camera.h \
  D:/Progams/Kraken2D/src/ecs/Systems.h \
- D:/Progams/Kraken2D/src/physics/PhysicsSystem.h \
  D:/Progams/Kraken2D/src/physics/CollisionSystem.h \
  D:/Progams/Kraken2D/src/physics/SpatialGrid.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/algorithm \
@@ -361,4 +361,5 @@ CMakeFiles/Kraken2D.dir/src/core/Engine.cpp.obj: \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/uniform_int_dist.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/pstl/glue_algorithm_defs.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/unordered_set \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/unordered_set.h
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/unordered_set.h \
+ D:/Progams/Kraken2D/src/physics/PhysicsSystem.h

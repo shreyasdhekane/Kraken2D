@@ -376,6 +376,7 @@ CMakeFiles/Kraken2D.dir/src/core/Engine.cpp.obj
  C:/SDL2/include/SDL2/SDL_video.h
  C:/SDL2/include/SDL2/begin_code.h
  C:/SDL2/include/SDL2/close_code.h
+ D:/Progams/Kraken2D/src/core/Camera.h
  D:/Progams/Kraken2D/src/ecs/ComponentArray.h
  D:/Progams/Kraken2D/src/ecs/ComponentManager.h
  D:/Progams/Kraken2D/src/ecs/Components.h
