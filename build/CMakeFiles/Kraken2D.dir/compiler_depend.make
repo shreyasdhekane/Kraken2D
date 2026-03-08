@@ -384,6 +384,7 @@ CMakeFiles/Kraken2D.dir/src/core/Engine.cpp.obj: D:/Progams/Kraken2D/src/core/En
   D:/Progams/Kraken2D/src/physics/CollisionSystem.h \
   D:/Progams/Kraken2D/src/physics/PhysicsSystem.h \
   D:/Progams/Kraken2D/src/physics/SpatialGrid.h \
+  D:/Progams/Kraken2D/src/scenes/CosmicDashScene.h \
   D:/Progams/Kraken2D/src/scenes/GameScene.h \
   D:/Progams/Kraken2D/src/scenes/MenuScene.h \
   D:/Progams/Kraken2D/src/core/Engine.h \
@@ -791,6 +792,8 @@ C:/SDL2/include/SDL2/close_code.h:
 C:/SDL2/include/SDL2/SDL_timer.h:
 
 C:/SDL2/include/SDL2/SDL_stdinc.h:
+
+D:/Progams/Kraken2D/src/scenes/CosmicDashScene.h:
 
 C:/SDL2/include/SDL2/SDL_render.h:
 
