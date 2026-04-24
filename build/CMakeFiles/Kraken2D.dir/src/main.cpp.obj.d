@@ -1,5 +1,5 @@
 CMakeFiles/Kraken2D.dir/src/main.cpp.obj: \
- D:\Progams\Kraken2D\src\main.cpp D:\Progams\Kraken2D\src\core/Engine.h \
+ D:\Progams\Kraken2D\src\main.cpp D:\Progams\Kraken2D\src\Engine.h \
  C:/SDL3-3.4.4/x86_64-w64-mingw32/include/SDL3/SDL.h \
  C:/SDL3-3.4.4/x86_64-w64-mingw32/include/SDL3/SDL_stdinc.h \
  C:/SDL3-3.4.4/x86_64-w64-mingw32/include/SDL3/SDL_platform_defines.h \
@@ -87,8 +87,6 @@ CMakeFiles/Kraken2D.dir/src/main.cpp.obj: \
  C:/SDL3-3.4.4/x86_64-w64-mingw32/include/SDL3/SDL_tray.h \
  C:/SDL3-3.4.4/x86_64-w64-mingw32/include/SDL3/SDL_version.h \
  C:/SDL3-3.4.4/x86_64-w64-mingw32/include/SDL3/SDL_oldnames.h \
- D:/Progams/Kraken2D/src/scene/SceneManager.h \
- D:/Progams/Kraken2D/src/scene/Scene.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/string \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/requires_hosted.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/x86_64-w64-mingw32/bits/c++config.h \
@@ -224,8 +222,32 @@ CMakeFiles/Kraken2D.dir/src/main.cpp.obj: \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/vector.tcc \
  C:/Program\ Files/mingw64/include/c++/15.2.0/array \
  C:/Program\ Files/mingw64/include/c++/15.2.0/compare \
- D:\Progams\Kraken2D\src\games/MenuScene.h \
- D:/Progams/Kraken2D/src/core/MiniFont.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/cstring \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/iostream \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/ostream \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/ostream.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/ios \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/ios_base.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/locale_classes.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/locale_classes.tcc \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/system_error \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/x86_64-w64-mingw32/bits/error_constants.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/stdexcept \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/streambuf \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/streambuf.tcc \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/basic_ios.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/locale_facets.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/cwctype \
+ C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/wctype.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/x86_64-w64-mingw32/bits/ctype_base.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/streambuf_iterator.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/x86_64-w64-mingw32/bits/ctype_inline.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/locale_facets.tcc \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/basic_ios.tcc \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/ostream.tcc \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/istream \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/istream.tcc \
+ D:\Progams\Kraken2D\src\games/Menu.h D:/Progams/Kraken2D/src/MiniFont.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/cmath \
  C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/math.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/specfun.h \
@@ -241,4 +263,19 @@ CMakeFiles/Kraken2D.dir/src/main.cpp.obj: \
  C:/Program\ Files/mingw64/include/c++/15.2.0/tr1/modified_bessel_func.tcc \
  C:/Program\ Files/mingw64/include/c++/15.2.0/tr1/poly_hermite.tcc \
  C:/Program\ Files/mingw64/include/c++/15.2.0/tr1/poly_laguerre.tcc \
- C:/Program\ Files/mingw64/include/c++/15.2.0/tr1/riemann_zeta.tcc
+ C:/Program\ Files/mingw64/include/c++/15.2.0/tr1/riemann_zeta.tcc \
+ D:\Progams\Kraken2D\src\games/Pong.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/algorithm \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_algo.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/algorithmfwd.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_heap.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/uniform_int_dist.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/pstl/glue_algorithm_defs.h \
+ D:\Progams\Kraken2D\src\games/Snake.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/deque \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_deque.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/deque.tcc \
+ D:\Progams\Kraken2D\src\games/BrickBreaker.h \
+ D:\Progams\Kraken2D\src\games/Tetris.h \
+ D:\Progams\Kraken2D\src\games/Asteroid.h \
+ D:\Progams\Kraken2D\src\games/SpaceInvaders.h

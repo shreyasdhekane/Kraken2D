@@ -1,36 +1,25 @@
-#include "core/Engine.h"
-#include "games/MenuScene.h"
+#include "Engine.h"
+#include "games/Menu.h"
+#include "games/Pong.h"
+#include "games/Snake.h"
+#include "games/BrickBreaker.h"
+#include "games/Tetris.h"
+#include "games/Asteroid.h"
+#include "games/SpaceInvaders.h"
 
-int main(int argc, char* argv[]) {
+int main(int, char**) {
     Engine engine;
+    if (!engine.init("Kraken2D Arcade")) return 1;
 
-    if (!engine.init("Kraken2D Arcade", 800, 600)) {
-        return 1;
-    }
+    engine.registerScene("menu",         []{ return std::make_unique<Menu>();         });
+    engine.registerScene("pong",         []{ return std::make_unique<Pong>();         });
+    engine.registerScene("snake",        []{ return std::make_unique<Snake>();        });
+    engine.registerScene("brick_breaker",[]{ return std::make_unique<BrickBreaker>(); });
+    engine.registerScene("cosmic_dash",  []{ return std::make_unique<Tetris>();       });
+    engine.registerScene("asteroid",     []{ return std::make_unique<Asteroid>();     });
+    engine.registerScene("particle",     []{ return std::make_unique<SpaceInvaders>();});
 
-    auto& sm = engine.sceneManager();
-
-    // Register menu scene
-    sm.registerScene("menu", []() { return std::make_unique<MenuScene>(); });
-
-    // TODO Chunks 2-7: register game scenes here:
-    // sm.registerScene("pong",         []() { return std::make_unique<PongScene>(); });
-    // sm.registerScene("snake",        []() { return std::make_unique<SnakeScene>(); });
-    // sm.registerScene("brick_breaker",[]() { return std::make_unique<BrickBreakerScene>(); });
-    // sm.registerScene("cosmic_dash",  []() { return std::make_unique<CosmicDashScene>(); });
-    // sm.registerScene("asteroid",     []() { return std::make_unique<AsteroidScene>(); });
-    // sm.registerScene("particle",     []() { return std::make_unique<ParticleStormScene>(); });
-
-    // For now, all non-menu tile clicks route back to menu (stub)
-    sm.registerScene("pong",          []() { return std::make_unique<MenuScene>(); });
-    sm.registerScene("snake",         []() { return std::make_unique<MenuScene>(); });
-    sm.registerScene("brick_breaker", []() { return std::make_unique<MenuScene>(); });
-    sm.registerScene("cosmic_dash",   []() { return std::make_unique<MenuScene>(); });
-    sm.registerScene("asteroid",      []() { return std::make_unique<MenuScene>(); });
-    sm.registerScene("particle",      []() { return std::make_unique<MenuScene>(); });
-
-    sm.switchTo("menu");
-
+    engine.switchTo("menu");
     engine.run();
     return 0;
 }

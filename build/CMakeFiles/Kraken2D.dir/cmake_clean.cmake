@@ -1,6 +1,4 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/Kraken2D.dir/src/core/Engine.cpp.obj"
-  "CMakeFiles/Kraken2D.dir/src/core/Engine.cpp.obj.d"
   "CMakeFiles/Kraken2D.dir/src/main.cpp.obj"
   "CMakeFiles/Kraken2D.dir/src/main.cpp.obj.d"
   "Kraken2D.exe"
