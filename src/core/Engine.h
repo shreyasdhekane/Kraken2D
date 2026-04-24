@@ -1,10 +1,6 @@
 #pragma once
-#include <SDL2/SDL.h>
-#include <vector>
-#include "../ecs/EntityManager.h"
-#include "../ecs/ComponentManager.h"
-#include "../ecs/Components.h"
-#include "../ecs/Systems.h"
+#include <SDL3/SDL.h>
+#include "../scene/SceneManager.h"
 
 class Engine {
 public:
@@ -15,23 +11,24 @@ public:
     void run();
     void shutdown();
 
+    SceneManager& sceneManager() { return m_sceneManager; }
+
 private:
     void processInput();
-    void update(float deltaTime);
-    void render();
 
     SDL_Window*   m_window   = nullptr;
     SDL_Renderer* m_renderer = nullptr;
     bool          m_running  = false;
 
+    int m_width = 800, m_height = 600;
+
     static constexpr float FIXED_TIMESTEP = 1.0f / 60.0f;
 
-    // ECS
-    EntityManager            m_entityManager;
-    ComponentManager         m_componentManager;
-    std::vector<Entity>      m_entities;
+    SceneManager m_sceneManager;
+    InputState   m_inputState;
+    bool         m_prevKeys[SDL_SCANCODE_COUNT] = {};
 
-    // Systems
-    RenderSystem             m_renderSystem;
-    MovementSystem           m_movementSystem;
+    float m_fpsTimer = 0;
+    int   m_frames   = 0;
+    int   m_fps      = 0;
 };

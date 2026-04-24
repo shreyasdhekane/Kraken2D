@@ -1,43 +1,61 @@
-# Kraken2D — A 2D Game Engine in C++
+# Kraken2D Arcade — Chunk 1 (Menu Portal)
 
-A lightweight 2D game engine built from scratch in C++17 using SDL2.
-Built to understand how game engines actually work under the hood —
-not a tutorial follow-along, but a ground-up implementation.
+This is **Chunk 1 of 7**. Only the engine + main menu is active. The 6 game tiles currently loop back to menu. Each subsequent chunk will wire in one game.
 
-## Architecture
+## What's Included So Far
 
-- **ECS (Entity Component System)** — data-oriented design with
-  cache-friendly component storage
-- **Fixed Timestep Game Loop** — decouples physics from rendering
-- **AABB + Circle Collision** — with impulse-based resolution
-- **Spatial Grid Partitioning** — broadphase collision optimization
+**Engine (`src/core/`)**
+- `Engine.cpp/h` — SDL2 window + fixed-timestep game loop + input snapshotting (just-pressed detection for menu nav)
+- `Camera.h` — world→screen transform + screen shake
+- `RenderSystem.h` — shape renderer (circle/rect/triangle) with layer sorting
+- `MiniFont.h` — 5×7 bitmap font (no SDL_ttf needed)
 
-## Games Built On The Engine
+**ECS (`src/ecs/`)**
+- `EntityManager`, `ComponentArray`, `ComponentManager`, `Components` — all component types defined up-front so game scenes can use them later without refactors
 
-- **Cosmic Dash** — physics-heavy 2D space platformer
-- _(Game 2 TBD)_
+**Physics (`src/physics/`)** — present, unused until chunk 4+
+- `SpatialGrid.h`, `Collision.h`, `PhysicsSystem.h`, `CollisionSystem.h`
 
-## Tech Stack
+**Scenes (`src/scene/`, `src/games/`)**
+- `Scene.h` / `SceneManager.h` — scene switching via string IDs
+- `MenuScene.h` — 6-tile portal, arrow-key nav, parallax starfield
 
-- C++17
-- SDL2
-- CMake
+The other game scenes (`PongScene.h`, `SnakeScene.h`, etc.) are **present in the repo** but not registered in `main.cpp` yet — they'll be wired in one at a time in later chunks so we can verify each one works in isolation.
 
-## Build Instructions
+## Build (Windows / MinGW)
 
-### Prerequisites
-
-- MinGW-w64 (g++ 13+)
-- CMake 3.16+
-- SDL2 2.30+
-
-### Build
-
-```bash
+```bat
 mkdir build
 cd build
 cmake .. -G "MinGW Makefiles"
 cmake --build .
-cp C:/SDL2/bin/SDL2.dll .
-./Kraken2D.exe
+copy C:\SDL2\bin\SDL2.dll .
+Kraken2D.exe
 ```
+
+## Expected Behavior
+
+- Window opens titled **"Kraken2D Arcade"**
+- Animated starfield background
+- **"KRAKEN 2D"** title with **"ARCADE COLLECTION"** subtitle
+- 6 colored tiles in a 3×2 grid:
+  1. COSMIC DASH
+  2. ASTEROID FIELD
+  3. BRICK BREAKER
+  4. NEON SNAKE
+  5. PARTICLE STORM
+  6. PONG AI
+- Selected tile pulses with a glow
+- **Controls:** Arrows/WASD to move selection, Enter/Space to "launch" (will just loop back to menu for now), Esc to quit
+- **FPS counter** in top-right
+
+## What Chunk 1 Proves
+
+If the menu appears and pulse-selects work, we know:
+- SDL2 is linked correctly
+- Scene-switching system works
+- Input edge-detection works (just-pressed keys for menu nav)
+- Bitmap font renders
+- Fixed-timestep loop runs smoothly
+
+**Next: Chunk 2 — wire in Pong AI** (simplest game, no ECS).
