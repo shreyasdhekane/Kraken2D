@@ -88,4 +88,39 @@ inline int width(const std::string& t, int scale) {
     return (int)t.size() * 6 * scale;
 }
 
+
+// Draw pixel-art hearts for lives display
+inline void drawHeart(SDL_Renderer* r, int x, int y, int size,
+                      uint8_t R=255, uint8_t G=60, uint8_t B=80) {
+    // 7x6 pixel heart bitmap
+    static const uint8_t H[6][7] = {
+        {0,1,1,0,1,1,0},
+        {1,1,1,1,1,1,1},
+        {1,1,1,1,1,1,1},
+        {0,1,1,1,1,1,0},
+        {0,0,1,1,1,0,0},
+        {0,0,0,1,0,0,0},
+    };
+    SDL_SetRenderDrawColor(r, R, G, B, 255);
+    for(int row=0;row<6;row++)
+        for(int col=0;col<7;col++)
+            if(H[row][col]) {
+                SDL_FRect p{(float)(x+col*size),(float)(y+row*size),(float)size,(float)size};
+                SDL_RenderFillRect(r,&p);
+            }
+}
+
+inline void drawHearts(SDL_Renderer* r, int lives, int maxLives,
+                       int x, int y, int size, int gap=2) {
+    int heartW = 7*size + gap;
+    for(int i=0;i<maxLives;i++) {
+        if(i < lives)
+            drawHeart(r, x+i*heartW, y, size, 255, 60, 80);
+        else {
+            // empty heart outline
+            SDL_SetRenderDrawColor(r,80,40,50,255);
+            drawHeart(r, x+i*heartW, y, size, 60,30,40);
+        }
+    }
+}
 } // namespace Font

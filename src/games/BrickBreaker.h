@@ -1,5 +1,6 @@
 #pragma once
 #include "../Engine.h"
+#include "../Audio.h"
 #include "../MiniFont.h"
 #include <vector>
 #include <cmath>
@@ -11,7 +12,7 @@ class BrickBreaker : public Scene {
     float padX=0,padW=0,padH=0;
     float ballX=0,ballY=0,ballVX=0,ballVY=0,ballR=0;
     std::vector<Brick> bricks;
-    int   score=0, level=1;
+    int   score=0, level=1, lives=3;
     bool  launched=false,dead=false,won=false;
     int   sw=1920,sh=1080;
 
@@ -21,7 +22,7 @@ class BrickBreaker : public Scene {
         ballR=sw*0.008f;
         ballX=sw*0.5f; ballY=sh*0.82f;
         ballVX=0; ballVY=0;
-        launched=false; dead=false; won=false; score=0; level=1;
+        launched=false; dead=false; won=false; score=0; level=1; lives=3;
         bricks.clear();
 
         int cols=12, rows=6;
@@ -78,6 +79,7 @@ public:
         if(ballY+ballR>=padY&&ballY+ballR<=padY+padH*2&&
            ballX>=padX-ballR&&ballX<=padX+padW+ballR&&ballVY>0){
             ballVY=-std::fabs(ballVY);
+            Audio::get().sfxPaddle();
             float off=(ballX-(padX+padW*0.5f))/(padW*0.5f);
             ballVX+=off*sh*0.22f;
             // clamp speed
@@ -102,6 +104,7 @@ public:
             if(minOver==overT||minOver==overB) ballVY=-ballVY;
             else                               ballVX=-ballVX;
             b.alive=false; score+=50; alive--;
+            Audio::get().sfxHit();
         }
         if(alive==0){
             level++;
@@ -126,10 +129,16 @@ public:
             // re-launch ball
             launched=false;
             ballVX=0; ballVY=0;
+            Audio::get().sfxLevelUp();
         }
 
         // lost
-        if(ballY-ballR>(float)sh) dead=true;
+        if(ballY-ballR>(float)sh){
+            lives--;
+            Audio::get().sfxDie();
+            if(lives<=0) dead=true;
+            else { launched=false; ballVX=0; ballVY=0; }
+        }
     }
 
     void render(SDL_Renderer* r)override{
@@ -173,6 +182,7 @@ public:
 
         int ts=std::max(2,sw/480);
         Font::draw(r,"LEVEL: "+std::to_string(level),20,20,ts,120,200,255);
+        Font::drawHearts(r,lives,3,20,20+ts*10,ts+1);
         Font::draw(r,"SCORE: "+std::to_string(score),sw/2-Font::width("SCORE: "+std::to_string(score),ts)/2,
                    20,ts,255,220,120);
         std::string h="A/D OR ARROWS MOVE   SPACE LAUNCH   ESC MENU";

@@ -87,70 +87,19 @@ CMakeFiles/Kraken2D.dir/src/main.cpp.obj: \
  C:/SDL3-3.4.4/x86_64-w64-mingw32/include/SDL3/SDL_tray.h \
  C:/SDL3-3.4.4/x86_64-w64-mingw32/include/SDL3/SDL_version.h \
  C:/SDL3-3.4.4/x86_64-w64-mingw32/include/SDL3/SDL_oldnames.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/string \
+ D:\Progams\Kraken2D\src\Audio.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/cmath \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/requires_hosted.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/x86_64-w64-mingw32/bits/c++config.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/x86_64-w64-mingw32/bits/os_defines.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/x86_64-w64-mingw32/bits/cpu_defines.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/pstl/pstl_config.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stringfwd.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/memoryfwd.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/char_traits.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/postypes.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/cwchar \
- C:/Program\ Files/mingw64/include/c++/15.2.0/type_traits \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/version.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/allocator.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/x86_64-w64-mingw32/bits/c++allocator.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/new_allocator.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/new \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/exception.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/functexcept.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/exception_defines.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/move.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/cpp_type_traits.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/localefwd.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/x86_64-w64-mingw32/bits/c++locale.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/clocale \
- C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/locale.h \
- C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/stdio.h \
- C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/sec_api/stdio_s.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/iosfwd \
- C:/Program\ Files/mingw64/include/c++/15.2.0/cctype \
- C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/ctype.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/ostream_insert.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/cxxabi_forced.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_iterator_base_funcs.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/concept_check.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/debug/assertions.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_iterator_base_types.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_iterator.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/version.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/type_traits \
  C:/Program\ Files/mingw64/include/c++/15.2.0/ext/type_traits.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/ptr_traits.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_function.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/backward/binders.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/ext/numeric_traits.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_algobase.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_pair.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/utility.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/debug/debug.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/predefined_ops.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bit \
- C:/Program\ Files/mingw64/include/c++/15.2.0/concepts \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/refwrap.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/invoke.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/range_access.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/initializer_list \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/basic_string.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/ext/alloc_traits.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/alloc_traits.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_construct.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/string_view \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/functional_hash.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/hash_bytes.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/string_view.tcc \
- C:/Program\ Files/mingw64/include/c++/15.2.0/ext/string_conversions.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/cstdlib \
+ C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/math.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/std_abs.h \
  C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/stdlib.h \
  C:/Program\ Files/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/limits.h \
  C:/Program\ Files/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/syslimits.h \
@@ -160,19 +109,91 @@ CMakeFiles/Kraken2D.dir/src/main.cpp.obj: \
  C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/malloc.h \
  C:/Program\ Files/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/mm_malloc.h \
  C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/errno.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/std_abs.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/cstdio \
- C:/Program\ Files/mingw64/include/c++/15.2.0/cerrno \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/charconv.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/basic_string.tcc \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/specfun.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_algobase.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/functexcept.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/exception_defines.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/ext/numeric_traits.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_pair.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/move.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/utility.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_iterator_base_types.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_iterator_base_funcs.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/concept_check.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/debug/assertions.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_iterator.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/ptr_traits.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/debug/debug.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/predefined_ops.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bit \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/concepts \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/limits \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/tr1/gamma.tcc \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/tr1/special_function_util.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/tr1/bessel_function.tcc \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/tr1/beta_function.tcc \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/tr1/ell_integral.tcc \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/tr1/exp_integral.tcc \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/tr1/hypergeometric.tcc \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/tr1/legendre_function.tcc \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/tr1/modified_bessel_func.tcc \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/tr1/poly_hermite.tcc \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/tr1/poly_laguerre.tcc \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/tr1/riemann_zeta.tcc \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/vector \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/allocator.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/x86_64-w64-mingw32/bits/c++allocator.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/new_allocator.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/new \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/exception.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/memoryfwd.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_construct.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_uninitialized.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/ext/alloc_traits.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/alloc_traits.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_vector.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/initializer_list \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_bvector.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/functional_hash.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/hash_bytes.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/refwrap.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/invoke.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_function.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/backward/binders.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/range_access.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/vector.tcc \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/memory_resource.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/cstddef \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/uses_allocator.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/uses_allocator_args.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/tuple \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/cstdio \
+ C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/stdio.h \
+ C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/sec_api/stdio_s.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/string \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stringfwd.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/char_traits.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/postypes.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/cwchar \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/localefwd.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/x86_64-w64-mingw32/bits/c++locale.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/clocale \
+ C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/locale.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/iosfwd \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/cctype \
+ C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/ctype.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/ostream_insert.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/cxxabi_forced.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/basic_string.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/string_view \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/string_view.tcc \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/ext/string_conversions.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/cstdlib \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/cerrno \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/charconv.h \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/bits/basic_string.tcc \
  C:/Program\ Files/mingw64/include/c++/15.2.0/memory \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_tempbuf.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_uninitialized.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_raw_storage_iter.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/align.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/unique_ptr.h \
@@ -216,10 +237,6 @@ CMakeFiles/Kraken2D.dir/src/main.cpp.obj: \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/erase_if.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/functional \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/std_function.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/vector \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_vector.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_bvector.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/vector.tcc \
  C:/Program\ Files/mingw64/include/c++/15.2.0/array \
  C:/Program\ Files/mingw64/include/c++/15.2.0/compare \
  C:/Program\ Files/mingw64/include/c++/15.2.0/cstring \
@@ -248,22 +265,6 @@ CMakeFiles/Kraken2D.dir/src/main.cpp.obj: \
  C:/Program\ Files/mingw64/include/c++/15.2.0/istream \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/istream.tcc \
  D:\Progams\Kraken2D\src\games/Menu.h D:/Progams/Kraken2D/src/MiniFont.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/cmath \
- C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/math.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/specfun.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/limits \
- C:/Program\ Files/mingw64/include/c++/15.2.0/tr1/gamma.tcc \
- C:/Program\ Files/mingw64/include/c++/15.2.0/tr1/special_function_util.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/tr1/bessel_function.tcc \
- C:/Program\ Files/mingw64/include/c++/15.2.0/tr1/beta_function.tcc \
- C:/Program\ Files/mingw64/include/c++/15.2.0/tr1/ell_integral.tcc \
- C:/Program\ Files/mingw64/include/c++/15.2.0/tr1/exp_integral.tcc \
- C:/Program\ Files/mingw64/include/c++/15.2.0/tr1/hypergeometric.tcc \
- C:/Program\ Files/mingw64/include/c++/15.2.0/tr1/legendre_function.tcc \
- C:/Program\ Files/mingw64/include/c++/15.2.0/tr1/modified_bessel_func.tcc \
- C:/Program\ Files/mingw64/include/c++/15.2.0/tr1/poly_hermite.tcc \
- C:/Program\ Files/mingw64/include/c++/15.2.0/tr1/poly_laguerre.tcc \
- C:/Program\ Files/mingw64/include/c++/15.2.0/tr1/riemann_zeta.tcc \
  D:\Progams\Kraken2D\src\games/Pong.h \
  C:/Program\ Files/mingw64/include/c++/15.2.0/algorithm \
  C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_algo.h \

@@ -1,5 +1,6 @@
 #pragma once
 #include "../Engine.h"
+#include "../Audio.h"
 #include "../MiniFont.h"
 #include <vector>
 #include <cmath>
@@ -78,6 +79,7 @@ public:
         if((in.keys[SDL_SCANCODE_SPACE]||in.keys[SDL_SCANCODE_UP])&&shootCooldown<=0){
             bullets.push_back({pX+pW*0.5f, sh*0.84f-pH, -sh*1.1f, false});
             shootCooldown=0.28f;
+            Audio::get().sfxShoot();
         }
 
         // alien movement
@@ -125,6 +127,7 @@ public:
                     a.alive=false; b.y=-100;
                     int pts=a.type==2?30:a.type==1?20:10;
                     score+=pts;
+                    Audio::get().sfxExplode();
                     uint8_t cr=a.type==2?255:a.type==1?120:80;
                     uint8_t cg=a.type==2?80:a.type==1?255:200;
                     explode(a.x+aw*0.5f,a.y+ah*0.5f,cr,cg,80);
@@ -148,7 +151,8 @@ public:
             if(!b.alien)continue;
             if(b.x>pX&&b.x<pX+pW&&b.y>py&&b.y<py+pH){
                 lives--; b.y=-100; explode(pX+pW*0.5f,py,120,220,255);
-                if(lives<=0)dead=true;
+                Audio::get().sfxHit();
+                if(lives<=0){dead=true;Audio::get().sfxDie();}
             }
         }
 
@@ -160,7 +164,7 @@ public:
         // wave clear
         bool anyAlive=false;
         for(auto& a:aliens) if(a.alive){anyAlive=true;break;}
-        if(!anyAlive){wave++;buildWave();}
+        if(!anyAlive){wave++;buildWave();Audio::get().sfxLevelUp();}
 
         // particles
         for(auto& p:particles){p.x+=p.vx*dt;p.y+=p.vy*dt;p.life-=dt;}
@@ -256,12 +260,8 @@ public:
         SDL_SetRenderDrawColor(r,80,180,80,255);
         SDL_RenderLine(r,0,(float)(sh*0.88f),(float)sw,(float)(sh*0.88f));
 
-        // lives
-        for(int i=0;i<lives;i++){
-            SDL_SetRenderDrawColor(r,120,220,255,255);
-            SDL_FRect l{(float)(20+i*(sw*0.04f+8)),(float)(sh*0.91f),(float)(sw*0.04f),(float)(sh*0.04f)};
-            SDL_RenderFillRect(r,&l);
-        }
+        // lives as hearts
+        Font::drawHearts(r,lives,3,20,(int)(sh*0.91f),(int)(sh*0.014f)+1);
 
         // particles
         SDL_SetRenderDrawBlendMode(r,SDL_BLENDMODE_BLEND);

@@ -1,5 +1,6 @@
 #pragma once
 #include "../Engine.h"
+#include "../Audio.h"
 #include "../MiniFont.h"
 #include <vector>
 #include <array>
@@ -97,7 +98,7 @@ class Tetris : public Scene {
         pieceRot=0;
         pieceRow=0;
         pieceCol=COLS/2-2;
-        if(!validPos(pieceType,pieceRot,pieceRow,pieceCol)) dead=true;
+        if(!validPos(pieceType,pieceRot,pieceRow,pieceCol)){dead=true;Audio::get().sfxDie();}
     }
 
     void lockPiece() {
@@ -132,6 +133,7 @@ class Tetris : public Scene {
             lines+=cleared;
             level=lines/10+1;
             dropInterval=std::max(0.05f,0.5f-(level-1)*0.045f);
+            Audio::get().sfxLineClear();
         }
     }
 
@@ -170,7 +172,8 @@ public:
             // wall kick attempts
             for(int kick : {0,1,-1,2,-2}){
                 if(validPos(pieceType,nr,pieceRow,pieceCol+kick)){
-                    pieceRot=nr; pieceCol+=kick; lockTimer=0; break;
+                    pieceRot=nr; pieceCol+=kick; lockTimer=0;
+                    Audio::get().sfxWall(); break;
                 }
             }
         }
@@ -188,6 +191,7 @@ public:
             int gr=ghostRow();
             score+=2*(gr-pieceRow);
             pieceRow=gr;
+            Audio::get().sfxHit();
             lockPiece();
             return;
         }

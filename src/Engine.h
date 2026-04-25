@@ -1,5 +1,6 @@
 #pragma once
 #include <SDL3/SDL.h>
+#include "Audio.h"
 #include <string>
 #include <memory>
 #include <unordered_map>
@@ -47,6 +48,8 @@ public:
         if (!m_renderer) { std::cerr << "CreateRenderer: " << SDL_GetError() << "\n"; return false; }
 
         SDL_SetRenderVSync(m_renderer, 1);
+        if(!Audio::get().init())
+            SDL_Log("WARNING: Audio failed to init — no sound");
         SDL_SetRenderDrawBlendMode(m_renderer, SDL_BLENDMODE_BLEND);
         std::cout << "Kraken2D " << m_w << "x" << m_h << "\n";
         return true;

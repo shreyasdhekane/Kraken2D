@@ -275,25 +275,26 @@ CMakeFiles/Kraken2D.dir/src/main.cpp.obj: D:/Progams/Kraken2D/src/main.cpp \
   C:/SDL3-3.4.4/x86_64-w64-mingw32/include/SDL3/SDL_version.h \
   C:/SDL3-3.4.4/x86_64-w64-mingw32/include/SDL3/SDL_video.h \
   D:/Progams/Kraken2D/src/MiniFont.h \
+  D:/Progams/Kraken2D/src/Audio.h \
   D:/Progams/Kraken2D/src/Engine.h \
   D:/Progams/Kraken2D/src/games/Asteroid.h \
   D:/Progams/Kraken2D/src/games/BrickBreaker.h \
-  D:/Progams/Kraken2D/src/games/FlappyBird.h \
   D:/Progams/Kraken2D/src/games/Menu.h \
   D:/Progams/Kraken2D/src/games/Pong.h \
   D:/Progams/Kraken2D/src/games/Snake.h \
-  D:/Progams/Kraken2D/src/games/SpaceInvaders.h
+  D:/Progams/Kraken2D/src/games/SpaceInvaders.h \
+  D:/Progams/Kraken2D/src/games/Tetris.h
 
 
 D:/Progams/Kraken2D/src/games/SpaceInvaders.h:
 
 D:/Progams/Kraken2D/src/games/Snake.h:
 
-D:/Progams/Kraken2D/src/games/FlappyBird.h:
-
 D:/Progams/Kraken2D/src/games/BrickBreaker.h:
 
 D:/Progams/Kraken2D/src/Engine.h:
+
+D:/Progams/Kraken2D/src/Audio.h:
 
 C:/SDL3-3.4.4/x86_64-w64-mingw32/include/SDL3/SDL_video.h:
 
@@ -302,6 +303,8 @@ C:/SDL3-3.4.4/x86_64-w64-mingw32/include/SDL3/SDL_thread.h:
 C:/SDL3-3.4.4/x86_64-w64-mingw32/include/SDL3/SDL_system.h:
 
 C:/SDL3-3.4.4/x86_64-w64-mingw32/include/SDL3/SDL_surface.h:
+
+D:/Progams/Kraken2D/src/games/Tetris.h:
 
 C:/SDL3-3.4.4/x86_64-w64-mingw32/include/SDL3/SDL_sensor.h:
 

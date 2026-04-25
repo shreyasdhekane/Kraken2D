@@ -1,5 +1,6 @@
 #pragma once
 #include "../Engine.h"
+#include "../Audio.h"
 #include "../MiniFont.h"
 #include <deque>
 #include <cstdlib>
@@ -14,7 +15,7 @@ class Snake : public Scene {
     P    food{0,0};
     int  dx=1,dy=0,ndx=1,ndy=0;
     float acc=0;
-    int  score=0;
+    int  score=0, best=0, lives=3;
     bool dead=false;
     int  sw=1920,sh=1080;
 
@@ -48,7 +49,7 @@ public:
     void update(float dt,const Input& in)override{
         sw=in.screenW;sh=in.screenH;
         if(in.keyJustPressed[SDL_SCANCODE_ESCAPE]){nextScene="menu";return;}
-        if(dead){if(in.keyJustPressed[SDL_SCANCODE_RETURN])reset();return;}
+        if(dead){if(in.keyJustPressed[SDL_SCANCODE_RETURN])reset();return;} // handled below
 
         if((in.keys[SDL_SCANCODE_LEFT] ||in.keys[SDL_SCANCODE_A])&&dx!=1) {ndx=-1;ndy=0;}
         if((in.keys[SDL_SCANCODE_RIGHT]||in.keys[SDL_SCANCODE_D])&&dx!=-1){ndx=1; ndy=0;}
@@ -61,10 +62,10 @@ public:
             acc-=step;
             dx=ndx;dy=ndy;
             P nh={snake.front().x+dx,snake.front().y+dy};
-            if(nh.x<0||nh.x>=GW||nh.y<0||nh.y>=GH){dead=true;return;}
-            for(auto& s:snake) if(s.x==nh.x&&s.y==nh.y){dead=true;return;}
+            if(nh.x<0||nh.x>=GW||nh.y<0||nh.y>=GH){ if(score>best)best=score; dead=true;Audio::get().sfxDie();return;}
+            for(auto& s:snake) if(s.x==nh.x&&s.y==nh.y){ if(score>best)best=score; dead=true;Audio::get().sfxDie();return;}
             snake.push_front(nh);
-            if(nh.x==food.x&&nh.y==food.y){score+=10;spawnFood();}
+            if(nh.x==food.x&&nh.y==food.y){score+=10;spawnFood();Audio::get().sfxCoin();}
             else snake.pop_back();
         }
     }
@@ -126,6 +127,7 @@ public:
         // HUD
         int ts=std::max(2,sw/480);
         Font::draw(r,"SCORE: "+std::to_string(score),ox,oy-ts*10,ts,255,220,120);
+        Font::draw(r,"BEST: "+std::to_string(best),ox+GW*cw/2,oy-ts*10,ts,120,220,255);
         Font::draw(r,"LENGTH: "+std::to_string(snake.size()),
                    ox+GW*cw-Font::width("LENGTH: "+std::to_string(snake.size()),ts),
                    oy-ts*10,ts,120,200,255);

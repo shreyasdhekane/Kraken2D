@@ -1,5 +1,6 @@
 #pragma once
 #include "../Engine.h"
+#include "../Audio.h"
 #include "../MiniFont.h"
 #include <vector>
 #include <cmath>
@@ -12,7 +13,7 @@ class Asteroid : public Scene {
 
     float shX=0,shY=0,shRot=0,shVX=0,shVY=0;
     bool  dead=false;
-    int   score=0;
+    int   score=0, lives=3;
     float spawnT=0,gameT=0,shootT=0;
     int   sw=1920,sh=1080;
 
@@ -23,7 +24,7 @@ class Asteroid : public Scene {
     void reset(){
         shX=sw*0.5f;shY=sh*0.5f;
         shRot=-3.14f/2;shVX=0;shVY=0;
-        dead=false;score=0;spawnT=0;gameT=0;shootT=0;
+        dead=false;score=0;lives=3;spawnT=0;gameT=0;shootT=0;
         rocks.clear();bullets.clear();particles.clear();
     }
 
@@ -88,6 +89,7 @@ public:
                                 shY+std::sin(shRot)*sw*0.018f,
                                 std::cos(shRot)*spd,std::sin(shRot)*spd,1.4f});
             shootT=0.16f;
+            Audio::get().sfxShoot();
         }
 
         // move ship + wrap
@@ -119,6 +121,7 @@ public:
                 if(dx*dx+dy*dy<rock.r*rock.r){
                     explode(rock.x,rock.y,200,120,60);
                     rock.alive=false; b.life=0; score+=100;
+                    Audio::get().sfxExplode();
                     // split big rocks
                     if(rock.r>sw*0.015f){
                         for(int i=0;i<2;i++){
@@ -142,7 +145,11 @@ public:
             float minDist=rock.r+sw*0.014f;
             if(dx*dx+dy*dy<minDist*minDist){
                 explode(shX,shY,120,220,255,20);
-                dead=true;
+                Audio::get().sfxExplode();
+                lives--;
+                if(lives<=0) dead=true;
+                else { shX=sw*0.5f; shY=sh*0.5f; shVX=0; shVY=0; }
+                break;
             }
         }
 
@@ -240,6 +247,7 @@ public:
         Font::draw(r,"SCORE: "+std::to_string(score),20,20,ts,120,255,255);
         Font::draw(r,"TIME: "+std::to_string((int)gameT)+"s",20,20+ts*10,ts,255,220,120);
         Font::draw(r,"ROCKS: "+std::to_string(rocks.size()),20,20+ts*20,ts,200,140,80);
+        Font::drawHearts(r,lives,3,20,20+ts*30,ts+1);
         std::string h="WASD/ARROWS ROTATE+THRUST   SPACE SHOOT   ESC MENU";
         Font::draw(r,h,sw/2-Font::width(h,1)/2,sh-24,1,100,100,130);
 

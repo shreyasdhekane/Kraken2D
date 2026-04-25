@@ -1,5 +1,6 @@
 #pragma once
 #include "../Engine.h"
+#include "../Audio.h"
 #include "../MiniFont.h"
 #include <cmath>
 #include <algorithm>
@@ -9,6 +10,9 @@ class Pong : public Scene {
     float lY=0,rY=0,bX=0,bY=0,bVX=0,bVY=0;
     int   lScore=0,rScore=0;
     int   sw=1920,sh=1080;
+    float aiError=0;   // positional aim error, changes on each hit
+    float aiReact=0;   // reaction delay timer
+    float aiTargetY=0; // what AI is actually tracking
 
     struct Pt{float x,y;};
     std::vector<Pt> trail;
@@ -30,6 +34,9 @@ class Pong : public Scene {
         lY=sh*0.5f-pH()*0.5f;
         rY=sh*0.5f-pH()*0.5f;
         trail.clear();
+        aiError=(rand()%100-50)*0.01f*sh*0.12f;
+        aiReact=0.18f+rand()%20*0.01f;
+        aiTargetY=sh*0.5f;
     }
 
     void clamp(){
@@ -81,6 +88,9 @@ public:
             bVX=std::fabs(bVX);
             bVY+=(bY-(lY+ph2*0.5f))/(ph2*0.5f)*sh*0.18f;
             clamp(); bX=lX()+pw2+bsz*0.5f+1;
+            Audio::get().sfxPaddle();
+            aiError=(rand()%100-50)*0.01f*sh*0.14f;
+            aiReact=0.12f+rand()%15*0.01f;
         }
         // right paddle
         if(bX+bsz*0.5f>=rX()&&bX+bsz*0.5f<=rX()+pw2&&bVX>0&&
@@ -88,10 +98,11 @@ public:
             bVX=-std::fabs(bVX);
             bVY+=(bY-(rY+ph2*0.5f))/(ph2*0.5f)*sh*0.18f;
             clamp(); bX=rX()-bsz*0.5f-1;
+            Audio::get().sfxWall();
         }
 
-        if(bX<-bsz){rScore++;resetBall();}
-        if(bX>(float)sw+bsz){lScore++;resetBall();}
+        if(bX<-bsz){rScore++;resetBall();Audio::get().sfxScore();}
+        if(bX>(float)sw+bsz){lScore++;resetBall();Audio::get().sfxScore();}
 
         trail.push_back({bX,bY});
         if((int)trail.size()>16) trail.erase(trail.begin());
