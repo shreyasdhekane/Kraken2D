@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kraken2D — Custom C++ Arcade Engine</title>
+  <meta name="description" content="A custom 2D game engine built from scratch in C++ with SDL3. 6 fully playable arcade games. No game framework.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Custom cursor -->
+  <div class="cursor-dot" id="cursor"></div>
+
+  <!-- ── NAV ── -->
+  <nav id="nav">
+    <div class="nav-logo">KRAKEN<span>2D</span></div>
+    <ul class="nav-links">
+      <li><a href="#games">Games</a></li>
+      <li><a href="#engine">Engine</a></li>
+      <li><a href="#build">Build</a></li>
+      <li><a href="#controls">Controls</a></li>
+    </ul>
+    <a href="https://github.com/shreyasdhekane/Kraken2D" class="nav-cta" target="_blank">GitHub ↗</a>
+    <button class="nav-burger" id="burger" aria-label="menu">☰</button>
+  </nav>
+
+  <!-- Mobile drawer -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#games"    onclick="closeMobile()">Games</a>
+    <a href="#engine"   onclick="closeMobile()">Engine</a>
+    <a href="#build"    onclick="closeMobile()">Build</a>
+    <a href="#controls" onclick="closeMobile()">Controls</a>
+    <a href="https://github.com/shreyasdhekane/Kraken2D" target="_blank">GitHub ↗</a>
+  </div>
+
+  <!-- ── HERO ── -->
+  <section class="hero" id="hero">
+    <div class="corner corner-tl"></div>
+    <div class="corner corner-tr"></div>
+    <div class="corner corner-bl"></div>
+    <div class="corner corner-br"></div>
+    <div class="hero-grid"></div>
+    <div class="pixels" id="pixels"></div>
+
+    <p class="hero-badge">Custom C++ Game Engine</p>
+    <h1 class="hero-title"><span class="k">KRAKEN</span><sup class="two">2D</sup></h1>
+    <p class="hero-sub">ARCADE <span class="blink">_</span> COLLECTION</p>
+    <p class="hero-desc">
+      A <strong>custom 2D game engine</strong> built from scratch in C++ with SDL3.
+      No Unity. No Unreal. No game framework.
+      Every system — rendering, physics, audio, collision — hand-written.
+      6 fully playable arcade games. One executable.
+    </p>
+    <div class="hero-btns">
+      <a href="#build"  class="btn-primary">Download &amp; Build</a>
+      <a href="#games"  class="btn-secondary">View Games ↓</a>
+    </div>
+  </section>
+
+  <!-- ── STATS ── -->
+  <div class="stats-bar">
+    <div class="stat"><span class="stat-num cyan">6</span><span class="stat-label">Arcade Games</span></div>
+    <div class="stat"><span class="stat-num green">0</span><span class="stat-label">External Game Libs</span></div>
+    <div class="stat"><span class="stat-num pink">60</span><span class="stat-label">FPS Fixed Timestep</span></div>
+    <div class="stat"><span class="stat-num yellow">~2k</span><span class="stat-label">Lines of C++</span></div>
+    <div class="stat"><span class="stat-num purple">C++17</span><span class="stat-label">Standard</span></div>
+  </div>
+
+  <!-- ── GAMES ── -->
+  <section class="section" id="games">
+    <p class="section-tag">Playable Games</p>
+    <h2 class="section-title">Six Games.<br>One Engine.</h2>
+    <p class="section-desc">Each game demonstrates a different engine capability — from impulse physics to predictive AI to procedural audio synthesis.</p>
+
+    <div class="games-grid">
+
+      <div class="game-card" data-accent="cyan">
+        <span class="game-num">01</span>
+        <span class="game-icon">🟦</span>
+        <h3 class="game-name">TETRIS</h3>
+        <p class="game-desc">Full Tetris with DAS input, wall kicks, ghost piece preview, and speed scaling every 10 lines.</p>
+        <div class="game-tags">
+          <span class="tag cyan">DAS Input</span>
+          <span class="tag cyan">Wall Kicks</span>
+          <span class="tag cyan">Ghost Piece</span>
+        </div>
+      </div>
+
+      <div class="game-card" data-accent="yellow">
+        <span class="game-num">02</span>
+        <span class="game-icon">🚀</span>
+        <h3 class="game-name">ASTEROID FIELD</h3>
+        <p class="game-desc">Newtonian thrust physics, rotating polygon asteroids that split on hit, 3 heart lives, escalating spawns.</p>
+        <div class="game-tags">
+          <span class="tag yellow">Thrust Physics</span>
+          <span class="tag yellow">Rock Splitting</span>
+          <span class="tag yellow">3 Lives</span>
+        </div>
+      </div>
+
+      <div class="game-card" data-accent="pink">
+        <span class="game-num">03</span>
+        <span class="game-icon">🧱</span>
+        <h3 class="game-name">BRICK BREAKER</h3>
+        <p class="game-desc">AABB collision with paddle angle english. Hit the edge to curve the ball. Infinite procedural levels.</p>
+        <div class="game-tags">
+          <span class="tag pink">AABB Collision</span>
+          <span class="tag pink">Angle English</span>
+          <span class="tag pink">Infinite Levels</span>
+        </div>
+      </div>
+
+      <div class="game-card" data-accent="green">
+        <span class="game-num">04</span>
+        <span class="game-icon">🐍</span>
+        <h3 class="game-name">NEON SNAKE</h3>
+        <p class="game-desc">Grid-based movement with acceleration curve — faster as you score. Pulsing food, gradient tail rendering.</p>
+        <div class="game-tags">
+          <span class="tag green">Grid Logic</span>
+          <span class="tag green">Speed Curve</span>
+          <span class="tag green">Best Score</span>
+        </div>
+      </div>
+
+      <div class="game-card" data-accent="purple">
+        <span class="game-num">05</span>
+        <span class="game-icon">👾</span>
+        <h3 class="game-name">SPACE INVADERS</h3>
+        <p class="game-desc">3 animated alien types, destructible shields that degrade cell-by-cell, waves that get faster each round.</p>
+        <div class="game-tags">
+          <span class="tag purple">Sprite Animation</span>
+          <span class="tag purple">Degrading Shields</span>
+          <span class="tag purple">Wave System</span>
+        </div>
+      </div>
+
+      <div class="game-card" data-accent="orange">
+        <span class="game-num">06</span>
+        <span class="game-icon">🏓</span>
+        <h3 class="game-name">PONG AI</h3>
+        <p class="game-desc">Predictive AI that calculates bounce trajectories — but with reaction delay and aim error so you can win.</p>
+        <div class="game-tags">
+          <span class="tag orange">Predictive AI</span>
+          <span class="tag orange">Aim Error</span>
+          <span class="tag orange">Ball Trail</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── ENGINE ── -->
+  <section class="section section-dark" id="engine">
+    <p class="section-tag">Under the Hood</p>
+    <h2 class="section-title">Hand-Built Engine</h2>
+    <p class="section-desc">No Unity. No Godot. No Unreal. Every system written from scratch, self-contained in a handful of header files.</p>
+
+    <div class="engine-layout">
+
+      <!-- File tree -->
+      <div class="arch-block">
+        <span class="arch-comment">// project structure</span>
+        <span class="arch-line"><span class="ac">Kraken2D/</span></span>
+        <span class="arch-line"><span class="dim">├── </span><span class="ay">CMakeLists.txt</span></span>
+        <span class="arch-line"><span class="dim">└── src/</span></span>
+        <span class="arch-line"><span class="dim">    ├── </span><span class="ac">Engine.h</span><span class="dim">      ← window, loop, input</span></span>
+        <span class="arch-line"><span class="dim">    ├── </span><span class="ag">Audio.h</span><span class="dim">       ← wave synthesis</span></span>
+        <span class="arch-line"><span class="dim">    ├── </span><span class="ap">MiniFont.h</span><span class="dim">    ← bitmap font</span></span>
+        <span class="arch-line"><span class="dim">    ├── </span><span class="ay">main.cpp</span><span class="dim">      ← 8 lines</span></span>
+        <span class="arch-line"><span class="dim">    └── games/</span></span>
+        <span class="arch-line"><span class="dim">        ├── </span><span class="ag">Menu.h</span></span>
+        <span class="arch-line"><span class="dim">        ├── </span><span class="ac">Tetris.h</span></span>
+        <span class="arch-line"><span class="dim">        ├── </span><span class="ay">Asteroid.h</span></span>
+        <span class="arch-line"><span class="dim">        ├── </span><span class="ap">BrickBreaker.h</span></span>
+        <span class="arch-line"><span class="dim">        ├── </span><span class="ag">Snake.h</span></span>
+        <span class="arch-line"><span class="dim">        ├── </span><span class="ap">SpaceInvaders.h</span></span>
+        <span class="arch-line"><span class="dim">        └── </span><span class="ac">Pong.h</span></span>
+      </div>
+
+      <!-- Feature cards -->
+      <div class="features-list">
+        <div class="feature"><span class="feature-icon">⏱</span><div><h4>Fixed Timestep Loop</h4><p>Physics runs at exactly 60Hz regardless of render speed. No drift, no jitter.</p></div></div>
+        <div class="feature"><span class="feature-icon">🎵</span><div><h4>Procedural Audio</h4><p>Sine, square, and noise waves synthesized at runtime via SDL3. Zero audio files.</p></div></div>
+        <div class="feature"><span class="feature-icon">🖥</span><div><h4>Resolution-Aware</h4><p>Every game reads actual screen dimensions each frame — scales to any monitor.</p></div></div>
+        <div class="feature"><span class="feature-icon">🎬</span><div><h4>Scene Manager</h4><p>Hot-swap between games via string IDs with onEnter/onExit lifecycle hooks.</p></div></div>
+      </div>
+
+    </div>
+
+    <!-- Second row features -->
+    <div class="features-grid">
+      <div class="feature-card"><span>📝</span><h4>5×7 Bitmap Font</h4><p>Full A–Z, 0–9, symbols. Any scale, no SDL_ttf. Includes pixel-art heart lives display.</p></div>
+      <div class="feature-card"><span>💥</span><h4>Inline Physics</h4><p>AABB, circle, and polygon collision inlined per-game. No shared library overhead.</p></div>
+      <div class="feature-card"><span>🤖</span><h4>Predictive AI</h4><p>Pong AI calculates exact bounce trajectories but adds human-like reaction delay and aim error.</p></div>
+      <div class="feature-card"><span>🪟</span><h4>Borderless Windowed</h4><p>SDL_WINDOW_BORDERLESS | MAXIMIZED — fullscreen feel, no mode switch. Alt-Tab works.</p></div>
+    </div>
+
+  </section>
+
+  <!-- ── BUILD ── -->
+  <section class="section" id="build">
+    <p class="section-tag">Get Started</p>
+    <h2 class="section-title">Build &amp; Run</h2>
+    <p class="section-desc">MinGW + SDL3 on Windows. Under 5 minutes from clone to running.</p>
+
+    <div class="build-layout">
+
+      <div class="requirements">
+        <p class="req-heading">Requirements</p>
+        <div class="req-list">
+          <div class="req-item"><span class="req-name">g++ (MinGW-w64)</span><span class="req-val">v13+</span></div>
+          <div class="req-item"><span class="req-name">CMake</span><span class="req-val">v3.16+</span></div>
+          <div class="req-item"><span class="req-name">SDL3</span><span class="req-val">v3.4+</span></div>
+          <div class="req-item"><span class="req-name">Platform</span><span class="req-val">Windows (MinGW)</span></div>
+        </div>
+        <div class="req-note">
+          SDL3 extracted to <code>C:/SDL3-3.4.4/</code><br>
+          with MinGW dev package inside<br>
+          <code>x86_64-w64-mingw32/</code>
+        </div>
+      </div>
+
+      <div class="code-block">
+        <span class="code-label">bash</span>
+        <pre><span class="c-dim"># configure</span>
+mkdir build &amp;&amp; cd build
+cmake .. -G <span class="c-yellow">"MinGW Makefiles"</span>
+
+<span class="c-dim"># build</span>
+cmake --build .
+
+<span class="c-dim"># copy SDL3 DLL</span>
+cp C:/SDL3-3.4.4/x86_64-w64-mingw32/bin/<span class="c-cyan">SDL3.dll</span> .
+
+<span class="c-dim"># run</span>
+./Kraken2D.exe</pre>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── CONTROLS ── -->
+  <section class="section section-dark" id="controls">
+    <p class="section-tag">How to Play</p>
+    <h2 class="section-title">Controls</h2>
+    <p class="section-desc">All games return to menu with Esc. Enter retries on game over.</p>
+
+    <div class="controls-grid">
+
+      <div class="control-card">
+        <div class="control-game">🏠 Menu</div>
+        <div class="control-row"><span class="key">Arrows / WASD</span><span>Navigate tiles</span></div>
+        <div class="control-row"><span class="key">Enter / Space</span><span>Launch game</span></div>
+        <div class="control-row"><span class="key">Esc</span><span>Quit</span></div>
+      </div>
+
+      <div class="control-card">
+        <div class="control-game">🟦 Tetris</div>
+        <div class="control-row"><span class="key">← →</span><span>Move piece</span></div>
+        <div class="control-row"><span class="key">Up / X</span><span>Rotate CW</span></div>
+        <div class="control-row"><span class="key">Z</span><span>Rotate CCW</span></div>
+        <div class="control-row"><span class="key">Down</span><span>Soft drop</span></div>
+        <div class="control-row"><span class="key">Space</span><span>Hard drop</span></div>
+      </div>
+
+      <div class="control-card">
+        <div class="control-game">🚀 Asteroid</div>
+        <div class="control-row"><span class="key">A / D</span><span>Rotate ship</span></div>
+        <div class="control-row"><span class="key">W / Up</span><span>Thrust</span></div>
+        <div class="control-row"><span class="key">Space</span><span>Shoot</span></div>
+      </div>
+
+      <div class="control-card">
+        <div class="control-game">🧱 Brick Breaker</div>
+        <div class="control-row"><span class="key">A / D</span><span>Move paddle</span></div>
+        <div class="control-row"><span class="key">Space</span><span>Launch ball</span></div>
+      </div>
+
+      <div class="control-card">
+        <div class="control-game">🐍 Snake &amp; 👾 Invaders</div>
+        <div class="control-row"><span class="key">WASD / Arrows</span><span>Move / aim</span></div>
+        <div class="control-row"><span class="key">Space</span><span>Shoot (Invaders)</span></div>
+      </div>
+
+      <div class="control-card">
+        <div class="control-game">🏓 Pong</div>
+        <div class="control-row"><span class="key">W / Up</span><span>Paddle up</span></div>
+        <div class="control-row"><span class="key">S / Down</span><span>Paddle down</span></div>
+        <div class="control-row dim-row"><span class="key">CPU</span><span>Actually beatable</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-logo">KRAKEN<span>2D</span></div>
+    <ul class="footer-links">
+      <li><a href="https://github.com/shreyasdhekane/Kraken2D" target="_blank">GitHub</a></li>
+      <li><a href="#games">Games</a></li>
+      <li><a href="#engine">Engine</a></li>
+      <li><a href="#build">Build</a></li>
+    </ul>
+    <p class="footer-copy">BUILT WITH C++ + SDL3 &nbsp;·&nbsp; MIT LICENSE &nbsp;·&nbsp; SHREYAS DHEKANE</p>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
