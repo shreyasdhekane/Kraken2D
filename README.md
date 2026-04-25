@@ -1,61 +1,127 @@
-# Kraken2D Arcade — Chunk 1 (Menu Portal)
+# ⚡ Kraken2D Arcade
 
-This is **Chunk 1 of 7**. Only the engine + main menu is active. The 6 game tiles currently loop back to menu. Each subsequent chunk will wire in one game.
+A custom 2D game engine built from scratch in C++ with SDL3, featuring 6 fully playable arcade games. No game frameworks, no physics libraries — everything from the rendering pipeline to collision detection is hand-written.
 
-## What's Included So Far
+---
 
-**Engine (`src/core/`)**
-- `Engine.cpp/h` — SDL2 window + fixed-timestep game loop + input snapshotting (just-pressed detection for menu nav)
-- `Camera.h` — world→screen transform + screen shake
-- `RenderSystem.h` — shape renderer (circle/rect/triangle) with layer sorting
-- `MiniFont.h` — 5×7 bitmap font (no SDL_ttf needed)
+## 🎮 Games
 
-**ECS (`src/ecs/`)**
-- `EntityManager`, `ComponentArray`, `ComponentManager`, `Components` — all component types defined up-front so game scenes can use them later without refactors
+| # | Game | Mechanics |
+|---|------|-----------|
+| 1 | **Tetris** | Falling blocks, line clears, DAS input, wall kicks, ghost piece |
+| 2 | **Asteroid Field** | Thrust physics, rock splitting, bullet collision, 3 lives |
+| 3 | **Brick Breaker** | Impulse physics, infinite procedural levels, angle control |
+| 4 | **Neon Snake** | Grid movement, speed scaling, best score tracking |
+| 5 | **Space Invaders** | 3 alien types, animated sprites, shields, wave system |
+| 6 | **Pong AI** | Predictive AI with reaction delay and aim error — actually beatable |
 
-**Physics (`src/physics/`)** — present, unused until chunk 4+
-- `SpatialGrid.h`, `Collision.h`, `PhysicsSystem.h`, `CollisionSystem.h`
+---
 
-**Scenes (`src/scene/`, `src/games/`)**
-- `Scene.h` / `SceneManager.h` — scene switching via string IDs
-- `MenuScene.h` — 6-tile portal, arrow-key nav, parallax starfield
+## 🏗️ Engine Architecture
 
-The other game scenes (`PongScene.h`, `SnakeScene.h`, etc.) are **present in the repo** but not registered in `main.cpp` yet — they'll be wired in one at a time in later chunks so we can verify each one works in isolation.
+Everything lives in `src/` — no external game framework dependencies.
 
-## Build (Windows / MinGW)
-
-```bat
-mkdir build
-cd build
-cmake .. -G "MinGW Makefiles"
-cmake --build .
-copy C:\SDL2\bin\SDL2.dll .
-Kraken2D.exe
+```
+src/
+├── Engine.h          — SDL3 window, fixed-timestep loop, input snapshot
+├── Audio.h           — Procedural audio (no audio files, pure sine/square wave synthesis)
+├── MiniFont.h        — 5×7 bitmap font renderer, pixel-art heart lives display
+├── main.cpp          — Scene registration, 8 lines
+└── games/
+    ├── Menu.h        — Animated portal with parallax starfield, transparent tiles
+    ├── Tetris.h      — Full Tetris with DAS, wall kicks, ghost piece, 7-bag pieces
+    ├── Asteroid.h    — Newtonian thrust, polygon rocks, bullet vs rock splitting
+    ├── BrickBreaker.h— AABB collision, paddle angle english, infinite level gen
+    ├── Snake.h       — Grid-based, acceleration curve, food spawning
+    ├── SpaceInvaders.h— Animated alien sprites, degrading shields, predictive shooting
+    └── Pong.h        — Predictive AI with human-like error margin and reaction delay
 ```
 
-## Expected Behavior
+### Key engine features
 
-- Window opens titled **"Kraken2D Arcade"**
-- Animated starfield background
-- **"KRAKEN 2D"** title with **"ARCADE COLLECTION"** subtitle
-- 6 colored tiles in a 3×2 grid:
-  1. COSMIC DASH
-  2. ASTEROID FIELD
-  3. BRICK BREAKER
-  4. NEON SNAKE
-  5. PARTICLE STORM
-  6. PONG AI
-- Selected tile pulses with a glow
-- **Controls:** Arrows/WASD to move selection, Enter/Space to "launch" (will just loop back to menu for now), Esc to quit
-- **FPS counter** in top-right
+- **Fixed timestep loop** at 60Hz with uncapped render — no physics drift
+- **Scene manager** — hot-swap between games via string IDs with enter/exit hooks
+- **Procedural audio** — `Audio.h` synthesizes sine, square, and noise waveforms at runtime using SDL3 audio streams. Zero audio files needed.
+- **Bitmap font** — 5×7 pixel glyphs, scales to any resolution, no SDL_ttf dependency
+- **Resolution-aware layout** — every game reads actual screen dimensions each frame, so the layout scales correctly to any monitor
+- **Borderless windowed fullscreen** — uses `SDL_WINDOW_BORDERLESS | SDL_WINDOW_MAXIMIZED`, no exclusive fullscreen mode switch
 
-## What Chunk 1 Proves
+---
 
-If the menu appears and pulse-selects work, we know:
-- SDL2 is linked correctly
-- Scene-switching system works
-- Input edge-detection works (just-pressed keys for menu nav)
-- Bitmap font renders
-- Fixed-timestep loop runs smoothly
+## 🔧 Build
 
-**Next: Chunk 2 — wire in Pong AI** (simplest game, no ECS).
+### Requirements
+
+| Tool | Version |
+|------|---------|
+| g++ (MinGW-w64) | 13+ |
+| CMake | 3.16+ |
+| SDL3 | 3.4+ |
+
+### Steps
+
+```bash
+# 1. Clone or extract project
+cd Kraken2D
+
+# 2. Create build directory
+mkdir build && cd build
+
+# 3. Configure
+cmake .. -G "MinGW Makefiles"
+
+# 4. Build
+cmake --build .
+
+# 5. Copy SDL3 DLL next to executable
+cp C:/SDL3-3.4.4/x86_64-w64-mingw32/bin/SDL3.dll .
+
+# 6. Run
+./Kraken2D.exe
+```
+
+> If your SDL3 is installed somewhere other than `C:/SDL3-3.4.4`, update `SDL3_ROOT` in `CMakeLists.txt`.
+
+---
+
+## 🎮 Controls
+
+| Game | Controls |
+|------|----------|
+| **Menu** | Arrows / WASD to select, Enter / Space to launch, Esc to quit |
+| **Tetris** | Left/Right move, Up/X rotate CW, Z rotate CCW, Down soft drop, Space hard drop |
+| **Asteroid** | WASD rotate + thrust, Space shoot |
+| **Brick Breaker** | Left/Right or A/D move paddle, Space launch |
+| **Snake** | Arrows or WASD |
+| **Space Invaders** | A/D move, Space shoot |
+| **Pong** | W/S or Up/Down |
+| **All games** | Esc returns to menu |
+
+---
+
+## 📁 Project Structure
+
+```
+Kraken2D/
+├── CMakeLists.txt
+├── README.md
+└── src/
+    ├── Engine.h
+    ├── Audio.h
+    ├── MiniFont.h
+    ├── main.cpp
+    └── games/
+        ├── Menu.h
+        ├── Tetris.h
+        ├── Asteroid.h
+        ├── BrickBreaker.h
+        ├── Snake.h
+        ├── SpaceInvaders.h
+        └── Pong.h
+```
+
+---
+
+## 📄 License
+
+MIT

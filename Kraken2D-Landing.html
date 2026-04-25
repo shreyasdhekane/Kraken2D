@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kraken2D — Custom C++ Arcade Engine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=VT323&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cyan:    #00f5ff;
+    --green:   #39ff14;
+    --pink:    #ff2d78;
+    --yellow:  #ffe600;
+    --purple:  #9d4edd;
+    --bg:      #04050d;
+    --bg2:     #080b18;
+    --border:  rgba(0,245,255,0.15);
+    --glow-c:  rgba(0,245,255,0.6);
+    --text:    #c8d8e8;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Share Tech Mono', monospace;
+    overflow-x: hidden;
+    cursor: crosshair;
+  }
+
+  /* ── Scanlines overlay ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.08) 2px,
+      rgba(0,0,0,0.08) 4px
+    );
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* ── Noise grain ── */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: -50%;
+    width: 200%;
+    height: 200%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.035;
+    pointer-events: none;
+    z-index: 9998;
+    animation: grain 0.5s steps(1) infinite;
+  }
+
+  @keyframes grain {
+    0%,100%{transform:translate(0,0)}
+    10%{transform:translate(-2%,-3%)}
+    20%{transform:translate(3%,1%)}
+    30%{transform:translate(-1%,2%)}
+    40%{transform:translate(2%,-2%)}
+    50%{transform:translate(-3%,3%)}
+    60%{transform:translate(1%,-1%)}
+    70%{transform:translate(-2%,2%)}
+    80%{transform:translate(3%,-3%)}
+    90%{transform:translate(-1%,1%)}
+  }
+
+  /* ── Nav ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 48px;
+    background: rgba(4,5,13,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    font-size: 18px;
+    color: var(--cyan);
+    text-shadow: 0 0 20px var(--cyan);
+    letter-spacing: 2px;
+  }
+
+  .nav-logo span { color: var(--pink); }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--cyan); text-shadow: 0 0 8px var(--cyan); }
+
+  .nav-cta {
+    background: transparent;
+    border: 1px solid var(--cyan);
+    color: var(--cyan);
+    padding: 8px 20px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 13px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.2s;
+    text-decoration: none;
+  }
+
+  .nav-cta:hover {
+    background: var(--cyan);
+    color: var(--bg);
+    box-shadow: 0 0 24px var(--glow-c);
+  }
+
+  /* ── Hero ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 24px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Grid bg */
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,245,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,245,255,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 40%, transparent 100%);
+  }
+
+  /* Corner decorations */
+  .corner {
+    position: absolute;
+    width: 60px; height: 60px;
+    border-color: var(--cyan);
+    border-style: solid;
+    opacity: 0.4;
+  }
+  .corner-tl { top: 80px; left: 40px; border-width: 2px 0 0 2px; }
+  .corner-tr { top: 80px; right: 40px; border-width: 2px 2px 0 0; }
+  .corner-bl { bottom: 40px; left: 40px; border-width: 0 0 2px 2px; }
+  .corner-br { bottom: 40px; right: 40px; border-width: 0 2px 2px 0; }
+
+  .hero-badge {
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 24px;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .hero-badge::before, .hero-badge::after {
+    content: '──';
+    margin: 0 12px;
+    opacity: 0.5;
+  }
+
+  .hero-title {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    font-size: clamp(52px, 10vw, 120px);
+    line-height: 0.9;
+    letter-spacing: -2px;
+    margin-bottom: 8px;
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+
+  .hero-title .k { color: var(--cyan); text-shadow: 0 0 40px var(--cyan), 0 0 80px rgba(0,245,255,0.3); }
+  .hero-title .two { color: var(--pink); text-shadow: 0 0 40px var(--pink); font-size: 0.6em; vertical-align: super; }
+
+  .hero-sub {
+    font-family: 'VT323', monospace;
+    font-size: clamp(20px, 3vw, 32px);
+    color: var(--yellow);
+    letter-spacing: 4px;
+    margin-bottom: 32px;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+
+  .hero-desc {
+    max-width: 600px;
+    font-size: 14px;
+    line-height: 1.8;
+    color: rgba(200,216,232,0.7);
+    margin-bottom: 48px;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+
+  .hero-desc strong { color: var(--cyan); }
+
+  .hero-btns {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+    animation: fadeUp 0.8s 0.4s ease both;
+  }
+
+  .btn-primary {
+    background: var(--cyan);
+    color: var(--bg);
+    border: none;
+    padding: 14px 36px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    transition: all 0.2s;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  }
+
+  .btn-primary:hover {
+    background: #fff;
+    box-shadow: 0 0 40px var(--cyan);
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid rgba(200,216,232,0.3);
+    padding: 14px 36px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.2s;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--pink);
+    color: var(--pink);
+    box-shadow: 0 0 20px rgba(255,45,120,0.3);
+  }
+
+  /* Floating pixel art elements */
+  .pixels {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .pixel {
+    position: absolute;
+    border-radius: 0;
+    animation: float linear infinite;
+  }
+
+  @keyframes float {
+    0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── Stats bar ── */
+  .stats {
+    background: var(--bg2);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 24px 0;
+    overflow: hidden;
+  }
+
+  .stats-inner {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .stat {
+    flex: 1;
+    text-align: center;
+    padding: 0 32px;
+    border-right: 1px solid var(--border);
+  }
+
+  .stat:last-child { border-right: none; }
+
+  .stat-num {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 36px;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.5;
+  }
+
+  /* ── Section ── */
+  section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 100px 24px;
+  }
+
+  .section-tag {
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--pink);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-tag::after {
+    content: '';
+    flex: 1;
+    max-width: 60px;
+    height: 1px;
+    background: var(--pink);
+    opacity: 0.5;
+  }
+
+  .section-title {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: clamp(28px, 4vw, 48px);
+    line-height: 1.1;
+    margin-bottom: 16px;
+    color: #fff;
+  }
+
+  .section-desc {
+    font-size: 14px;
+    line-height: 1.8;
+    color: rgba(200,216,232,0.6);
+    max-width: 520px;
+    margin-bottom: 60px;
+  }
+
+  /* ── Games grid ── */
+  .games-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+
+  .game-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 32px 28px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+    cursor: default;
+  }
+
+  .game-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--accent, var(--cyan));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+
+  .game-card:hover::before { transform: scaleX(1); }
+
+  .game-card:hover {
+    background: rgba(0,245,255,0.03);
+    border-color: rgba(0,245,255,0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  }
+
+  .game-num {
+    font-family: 'VT323', monospace;
+    font-size: 48px;
+    opacity: 0.08;
+    position: absolute;
+    top: 16px; right: 20px;
+    line-height: 1;
+  }
+
+  .game-icon {
+    font-size: 32px;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .game-name {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+  }
+
+  .game-desc {
+    font-size: 13px;
+    line-height: 1.6;
+    color: rgba(200,216,232,0.55);
+    margin-bottom: 20px;
+  }
+
+  .game-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .tag {
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border: 1px solid currentColor;
+    opacity: 0.6;
+  }
+
+  /* ── Engine features ── */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .feature {
+    display: flex;
+    gap: 20px;
+    padding: 28px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    transition: border-color 0.2s;
+  }
+
+  .feature:hover { border-color: rgba(0,245,255,0.3); }
+
+  .feature-icon {
+    font-size: 28px;
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .feature-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+  }
+
+  .feature-desc {
+    font-size: 12px;
+    line-height: 1.7;
+    color: rgba(200,216,232,0.55);
+  }
+
+  /* ── Architecture ── */
+  .arch-block {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 40px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 13px;
+    line-height: 2;
+    color: rgba(200,216,232,0.8);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .arch-block::before {
+    content: '// project structure';
+    display: block;
+    color: rgba(200,216,232,0.3);
+    margin-bottom: 16px;
+    font-size: 11px;
+  }
+
+  .arch-line { display: block; }
+  .ac { color: var(--cyan); }
+  .ag { color: var(--green); }
+  .ay { color: var(--yellow); }
+  .ap { color: var(--purple); }
+  .adim { color: rgba(200,216,232,0.3); }
+
+  /* ── Build section ── */
+  .build-steps {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .code-block {
+    background: #010208;
+    border: 1px solid var(--border);
+    padding: 28px;
+    position: relative;
+  }
+
+  .code-block .code-label {
+    position: absolute;
+    top: -1px; left: 20px;
+    background: var(--bg);
+    padding: 0 8px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--green);
+  }
+
+  .code-block pre {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 13px;
+    line-height: 2;
+    color: var(--green);
+    white-space: pre;
+    overflow-x: auto;
+  }
+
+  .code-block pre .dim { color: rgba(57,255,20,0.3); }
+  .code-block pre .cyan { color: var(--cyan); }
+  .code-block pre .yellow { color: var(--yellow); }
+
+  .requirements-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .req-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 20px;
+    background: rgba(0,245,255,0.03);
+    border: 1px solid var(--border);
+  }
+
+  .req-name {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .req-val {
+    font-size: 12px;
+    color: var(--green);
+  }
+
+  /* ── Controls ── */
+  .controls-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+
+  .control-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 24px;
+  }
+
+  .control-game {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--cyan);
+    letter-spacing: 2px;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+  }
+
+  .control-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    font-size: 12px;
+  }
+
+  .control-row:last-child { border-bottom: none; }
+
+  .key {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 2px 8px;
+    font-size: 11px;
+    color: #fff;
+    letter-spacing: 1px;
+  }
+
+  .control-action { color: rgba(200,216,232,0.5); font-size: 11px; }
+
+  /* ── Footer ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 48px 24px;
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    font-size: 24px;
+    color: var(--cyan);
+    text-shadow: 0 0 20px var(--cyan);
+    margin-bottom: 16px;
+  }
+
+  .footer-logo span { color: var(--pink); }
+
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-bottom: 32px;
+    list-style: none;
+  }
+
+  .footer-links a {
+    color: rgba(200,216,232,0.4);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--cyan); }
+
+  .footer-copy {
+    font-size: 11px;
+    color: rgba(200,216,232,0.2);
+    letter-spacing: 2px;
+  }
+
+  /* Glowing cursor dot */
+  .cursor-dot {
+    position: fixed;
+    width: 8px; height: 8px;
+    background: var(--cyan);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99999;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 12px var(--cyan), 0 0 24px rgba(0,245,255,0.4);
+    transition: transform 0.1s, width 0.2s, height 0.2s;
+  }
+
+  /* Blinking cursor animation */
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+  .blink { animation: blink 1s step-start infinite; }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    nav { padding: 14px 20px; }
+    .nav-links { display: none; }
+    .games-grid, .features-grid, .controls-grid, .build-steps { grid-template-columns: 1fr; }
+    .stats-inner { flex-wrap: wrap; gap: 24px; }
+    .stat { border-right: none; flex: auto; min-width: 40%; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor-dot" id="cursor"></div>
+
+<!-- Nav -->
+<nav>
+  <div class="nav-logo">KRAKEN<span>2D</span></div>
+  <ul class="nav-links">
+    <li><a href="#games">Games</a></li>
+    <li><a href="#engine">Engine</a></li>
+    <li><a href="#build">Build</a></li>
+    <li><a href="#controls">Controls</a></li>
+  </ul>
+  <a href="https://github.com/shreyasdhekane" class="nav-cta" target="_blank">GitHub ↗</a>
+</nav>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="corner corner-tl"></div>
+  <div class="corner corner-tr"></div>
+  <div class="corner corner-bl"></div>
+  <div class="corner corner-br"></div>
+
+  <div class="pixels" id="pixels"></div>
+
+  <p class="hero-badge">Custom C++ Game Engine</p>
+
+  <h1 class="hero-title">
+    <span class="k">KRAKEN</span><span class="two">2D</span>
+  </h1>
+
+  <p class="hero-sub">ARCADE <span class="blink">_</span> COLLECTION</p>
+
+  <p class="hero-desc">
+    A <strong>custom 2D game engine</strong> built from scratch in C++ with SDL3.
+    No Unity. No Unreal. No game framework.
+    Every system — rendering, physics, audio, collision — hand-written.
+    6 fully playable arcade games. One executable.
+  </p>
+
+  <div class="hero-btns">
+    <a href="#build" class="btn-primary">Download & Build</a>
+    <a href="#games" class="btn-secondary">View Games ↓</a>
+  </div>
+</div>
+
+<!-- Stats -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-num" style="color:var(--cyan)">6</div>
+      <div class="stat-label">Arcade Games</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num" style="color:var(--green)">0</div>
+      <div class="stat-label">External Game Libs</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num" style="color:var(--pink)">60</div>
+      <div class="stat-label">FPS Fixed Timestep</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num" style="color:var(--yellow)">~2k</div>
+      <div class="stat-label">Lines of C++</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num" style="color:var(--purple)">C++17</div>
+      <div class="stat-label">Standard</div>
+    </div>
+  </div>
+</div>
+
+<!-- Games -->
+<section id="games">
+  <p class="section-tag">Playable Games</p>
+  <h2 class="section-title">Six Games.<br>One Engine.</h2>
+  <p class="section-desc">Each game demonstrates a different engine capability — from impulse physics to predictive AI to procedural audio synthesis.</p>
+
+  <div class="games-grid">
+
+    <div class="game-card" style="--accent:var(--cyan)">
+      <span class="game-num">01</span>
+      <span class="game-icon">🟦</span>
+      <div class="game-name">TETRIS</div>
+      <div class="game-desc">Full Tetris implementation with DAS input, wall kicks, ghost piece preview, and speed scaling every 10 lines.</div>
+      <div class="game-tags">
+        <span class="tag" style="color:var(--cyan)">DAS Input</span>
+        <span class="tag" style="color:var(--cyan)">Wall Kicks</span>
+        <span class="tag" style="color:var(--cyan)">Ghost Piece</span>
+      </div>
+    </div>
+
+    <div class="game-card" style="--accent:var(--yellow)">
+      <span class="game-num">02</span>
+      <span class="game-icon">🚀</span>
+      <div class="game-name">ASTEROID FIELD</div>
+      <div class="game-desc">Newtonian thrust physics with drag, rotating polygon asteroids that split on hit, 3 heart lives, and escalating spawns.</div>
+      <div class="game-tags">
+        <span class="tag" style="color:var(--yellow)">Thrust Physics</span>
+        <span class="tag" style="color:var(--yellow)">Rock Splitting</span>
+        <span class="tag" style="color:var(--yellow)">3 Lives</span>
+      </div>
+    </div>
+
+    <div class="game-card" style="--accent:var(--pink)">
+      <span class="game-num">03</span>
+      <span class="game-icon">🧱</span>
+      <div class="game-name">BRICK BREAKER</div>
+      <div class="game-desc">AABB collision with paddle angle english — hit the edge of the paddle to curve the ball. Infinite procedurally generated levels.</div>
+      <div class="game-tags">
+        <span class="tag" style="color:var(--pink)">AABB Collision</span>
+        <span class="tag" style="color:var(--pink)">Angle English</span>
+        <span class="tag" style="color:var(--pink)">Infinite Levels</span>
+      </div>
+    </div>
+
+    <div class="game-card" style="--accent:var(--green)">
+      <span class="game-num">04</span>
+      <span class="game-icon">🐍</span>
+      <div class="game-name">NEON SNAKE</div>
+      <div class="game-desc">Grid-based movement with acceleration curve — the snake gets faster as you score. Pulsing food and gradient tail rendering.</div>
+      <div class="game-tags">
+        <span class="tag" style="color:var(--green)">Grid Logic</span>
+        <span class="tag" style="color:var(--green)">Speed Curve</span>
+        <span class="tag" style="color:var(--green)">Best Score</span>
+      </div>
+    </div>
+
+    <div class="game-card" style="--accent:var(--purple)">
+      <span class="game-num">05</span>
+      <span class="game-icon">👾</span>
+      <div class="game-name">SPACE INVADERS</div>
+      <div class="game-desc">3 animated alien types with frame-based sprites, destructible shields that degrade cell-by-cell, and waves that get faster each round.</div>
+      <div class="game-tags">
+        <span class="tag" style="color:var(--purple)">Sprite Animation</span>
+        <span class="tag" style="color:var(--purple)">Degrading Shields</span>
+        <span class="tag" style="color:var(--purple)">Wave System</span>
+      </div>
+    </div>
+
+    <div class="game-card" style="--accent:#ff9f00">
+      <span class="game-num">06</span>
+      <span class="game-icon">🏓</span>
+      <div class="game-name">PONG AI</div>
+      <div class="game-desc">Predictive AI that calculates bounce trajectories — but with human reaction delay, aim error, and slower speed so you can actually win.</div>
+      <div class="game-tags">
+        <span class="tag" style="color:#ff9f00">Predictive AI</span>
+        <span class="tag" style="color:#ff9f00">Aim Error</span>
+        <span class="tag" style="color:#ff9f00">Ball Trail</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Engine -->
+<section id="engine" style="background:var(--bg2);max-width:100%;padding:100px 0;">
+  <div style="max-width:1100px;margin:0 auto;padding:0 24px;">
+    <p class="section-tag">Under the Hood</p>
+    <h2 class="section-title">Hand-Built Engine</h2>
+    <p class="section-desc">No Unity. No Godot. No Unreal. Every system written from scratch, self-contained in a handful of header files.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;">
+
+      <div class="arch-block">
+        <span class="arch-line"><span class="ac">Kraken2D/</span></span>
+        <span class="arch-line"><span class="adim">├── </span><span class="ay">CMakeLists.txt</span></span>
+        <span class="arch-line"><span class="adim">└── src/</span></span>
+        <span class="arch-line"><span class="adim">    ├── </span><span class="ac">Engine.h</span><span class="adim">      ← window, loop, input</span></span>
+        <span class="arch-line"><span class="adim">    ├── </span><span class="ag">Audio.h</span><span class="adim">       ← wave synthesis</span></span>
+        <span class="arch-line"><span class="adim">    ├── </span><span class="ap">MiniFont.h</span><span class="adim">    ← bitmap font</span></span>
+        <span class="arch-line"><span class="adim">    ├── </span><span class="ay">main.cpp</span><span class="adim">      ← 8 lines</span></span>
+        <span class="arch-line"><span class="adim">    └── games/</span></span>
+        <span class="arch-line"><span class="adim">        ├── </span><span class="ag">Menu.h</span></span>
+        <span class="arch-line"><span class="adim">        ├── </span><span class="ac">Tetris.h</span></span>
+        <span class="arch-line"><span class="adim">        ├── </span><span class="ay">Asteroid.h</span></span>
+        <span class="arch-line"><span class="adim">        ├── </span><span class="ap">BrickBreaker.h</span></span>
+        <span class="arch-line"><span class="adim">        ├── </span><span class="ag">Snake.h</span></span>
+        <span class="arch-line"><span class="adim">        ├── </span><span class="ap">SpaceInvaders.h</span></span>
+        <span class="arch-line"><span class="adim">        └── </span><span class="ac">Pong.h</span></span>
+      </div>
+
+      <div class="features-grid" style="grid-template-columns:1fr;gap:16px;">
+
+        <div class="feature">
+          <div class="feature-icon">⏱</div>
+          <div>
+            <div class="feature-title">Fixed Timestep Loop</div>
+            <div class="feature-desc">Physics runs at exactly 60Hz regardless of render speed. No physics drift, no jitter.</div>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">🎵</div>
+          <div>
+            <div class="feature-title">Procedural Audio</div>
+            <div class="feature-desc">Sine, square, and noise waveforms synthesized at runtime via SDL3 audio streams. Zero audio files.</div>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">🖥</div>
+          <div>
+            <div class="feature-title">Resolution-Aware Layout</div>
+            <div class="feature-desc">Every game reads actual screen dimensions each frame. Scales correctly to any monitor, any resolution.</div>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">🎬</div>
+          <div>
+            <div class="feature-title">Scene Manager</div>
+            <div class="feature-desc">Hot-swap between games via string IDs with onEnter/onExit lifecycle hooks. Menu → game → menu in one keypress.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <br><br>
+
+    <div class="features-grid">
+      <div class="feature">
+        <div class="feature-icon">📝</div>
+        <div>
+          <div class="feature-title">5×7 Bitmap Font</div>
+          <div class="feature-desc">Full A–Z, 0–9, symbols. Renders at any scale, no SDL_ttf needed. Also includes pixel-art heart rendering for lives display.</div>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">💥</div>
+        <div>
+          <div class="feature-title">Inline Physics</div>
+          <div class="feature-desc">AABB, circle, and polygon collision math inlined per-game. No shared physics library — each game only carries what it needs.</div>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🤖</div>
+        <div>
+          <div class="feature-title">Predictive AI</div>
+          <div class="feature-desc">Pong AI calculates exact bounce trajectories but adds reaction delay and aim error to be humanly beatable.</div>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🪟</div>
+        <div>
+          <div class="feature-title">Borderless Windowed</div>
+          <div class="feature-desc">SDL_WINDOW_BORDERLESS | SDL_WINDOW_MAXIMIZED — fullscreen feel with no exclusive mode switch. Alt-Tab works instantly.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Build -->
+<section id="build">
+  <p class="section-tag">Get Started</p>
+  <h2 class="section-title">Build & Run</h2>
+  <p class="section-desc">MinGW + SDL3 on Windows. Should take under 5 minutes from clone to running.</p>
+
+  <div class="build-steps">
+
+    <div>
+      <div style="font-size:12px;letter-spacing:2px;color:var(--green);margin-bottom:20px;text-transform:uppercase;">Requirements</div>
+      <div class="requirements-list">
+        <div class="req-item">
+          <span class="req-name">g++ (MinGW-w64)</span>
+          <span class="req-val">v13+</span>
+        </div>
+        <div class="req-item">
+          <span class="req-name">CMake</span>
+          <span class="req-val">v3.16+</span>
+        </div>
+        <div class="req-item">
+          <span class="req-name">SDL3</span>
+          <span class="req-val">v3.4+</span>
+        </div>
+        <div class="req-item">
+          <span class="req-name">Platform</span>
+          <span class="req-val">Windows (MinGW)</span>
+        </div>
+      </div>
+
+      <div style="margin-top:24px;padding:16px 20px;background:rgba(57,255,20,0.05);border:1px solid rgba(57,255,20,0.15);font-size:12px;line-height:1.7;color:rgba(200,216,232,0.6);">
+        SDL3 should be extracted to <span style="color:var(--cyan)">C:/SDL3-3.4.4/</span><br>
+        with the MinGW dev package inside<br>
+        <span style="color:var(--cyan)">x86_64-w64-mingw32/</span>
+      </div>
+    </div>
+
+    <div class="code-block">
+      <span class="code-label">bash</span>
+      <pre>
+<span class="dim"># clone / extract project</span>
+<span class="cyan">cd</span> Kraken2D
+
+<span class="dim"># configure</span>
+mkdir build && <span class="cyan">cd</span> build
+cmake .. -G <span class="yellow">"MinGW Makefiles"</span>
+
+<span class="dim"># build</span>
+cmake --build .
+
+<span class="dim"># copy SDL3 DLL</span>
+cp C:/SDL3-3.4.4/x86_64-w64-mingw32/bin/SDL3.dll .
+
+<span class="dim"># run</span>
+./Kraken2D.exe
+      </pre>
+    </div>
+
+  </div>
+</section>
+
+<!-- Controls -->
+<section id="controls" style="background:var(--bg2);max-width:100%;padding:100px 0;">
+  <div style="max-width:1100px;margin:0 auto;padding:0 24px;">
+    <p class="section-tag">How to Play</p>
+    <h2 class="section-title">Controls</h2>
+    <p class="section-desc" style="margin-bottom:40px;">All games return to menu with Esc. Enter retries on game over.</p>
+
+    <div class="controls-grid">
+
+      <div class="control-card">
+        <div class="control-game">🏠 Menu</div>
+        <div class="control-row"><span class="key">Arrows / WASD</span><span class="control-action">Navigate tiles</span></div>
+        <div class="control-row"><span class="key">Enter / Space</span><span class="control-action">Launch game</span></div>
+        <div class="control-row"><span class="key">Esc</span><span class="control-action">Quit</span></div>
+      </div>
+
+      <div class="control-card">
+        <div class="control-game">🟦 Tetris</div>
+        <div class="control-row"><span class="key">← →</span><span class="control-action">Move piece</span></div>
+        <div class="control-row"><span class="key">Up / X</span><span class="control-action">Rotate CW</span></div>
+        <div class="control-row"><span class="key">Z</span><span class="control-action">Rotate CCW</span></div>
+        <div class="control-row"><span class="key">Down</span><span class="control-action">Soft drop</span></div>
+        <div class="control-row"><span class="key">Space</span><span class="control-action">Hard drop</span></div>
+      </div>
+
+      <div class="control-card">
+        <div class="control-game">🚀 Asteroid</div>
+        <div class="control-row"><span class="key">A / D</span><span class="control-action">Rotate ship</span></div>
+        <div class="control-row"><span class="key">W / Up</span><span class="control-action">Thrust</span></div>
+        <div class="control-row"><span class="key">Space</span><span class="control-action">Shoot</span></div>
+      </div>
+
+      <div class="control-card">
+        <div class="control-game">🧱 Brick Breaker</div>
+        <div class="control-row"><span class="key">A / D</span><span class="control-action">Move paddle</span></div>
+        <div class="control-row"><span class="key">Space</span><span class="control-action">Launch ball</span></div>
+      </div>
+
+      <div class="control-card">
+        <div class="control-game">🐍 Snake + 👾 Space Invaders</div>
+        <div class="control-row"><span class="key">WASD / Arrows</span><span class="control-action">Move / aim</span></div>
+        <div class="control-row"><span class="key">Space</span><span class="control-action">Shoot (Invaders)</span></div>
+      </div>
+
+      <div class="control-card">
+        <div class="control-game">🏓 Pong</div>
+        <div class="control-row"><span class="key">W / Up</span><span class="control-action">Paddle up</span></div>
+        <div class="control-row"><span class="key">S / Down</span><span class="control-action">Paddle down</span></div>
+        <div class="control-row" style="opacity:0.4;"><span class="key">CPU</span><span class="control-action">Actually beatable</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-logo">KRAKEN<span>2D</span></div>
+  <ul class="footer-links">
+    <li><a href="https://github.com/shreyasdhekane" target="_blank">GitHub</a></li>
+    <li><a href="#games">Games</a></li>
+    <li><a href="#engine">Engine</a></li>
+    <li><a href="#build">Build</a></li>
+  </ul>
+  <p class="footer-copy">BUILT WITH C++ + SDL3 &nbsp;·&nbsp; MIT LICENSE &nbsp;·&nbsp; SHREYAS DHEKANE</p>
+</footer>
+
+<script>
+  // Cursor dot
+  const cursor = document.getElementById('cursor');
+  document.addEventListener('mousemove', e => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top  = e.clientY + 'px';
+  });
+
+  // Floating pixels
+  const colors = ['#00f5ff','#39ff14','#ff2d78','#ffe600','#9d4edd'];
+  const container = document.getElementById('pixels');
+  for (let i = 0; i < 30; i++) {
+    const p = document.createElement('div');
+    p.className = 'pixel';
+    const size = 2 + Math.random() * 6;
+    p.style.cssText = `
+      width:${size}px; height:${size}px;
+      left:${Math.random()*100}%;
+      background:${colors[Math.floor(Math.random()*colors.length)]};
+      animation-duration:${8+Math.random()*16}s;
+      animation-delay:${-Math.random()*20}s;
+      opacity:${0.3+Math.random()*0.5};
+    `;
+    container.appendChild(p);
+  }
+
+  // Animate stat numbers on scroll
+  const stats = document.querySelectorAll('.stat-num');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.animation = 'fadeUp 0.6s ease both';
+      }
+    });
+  }, { threshold: 0.5 });
+  stats.forEach(s => observer.observe(s));
+
+  // Game card hover color shifts
+  document.querySelectorAll('.game-card').forEach(card => {
+    card.addEventListener('mouseenter', () => {
+      cursor.style.width = '16px';
+      cursor.style.height = '16px';
+    });
+    card.addEventListener('mouseleave', () => {
+      cursor.style.width = '8px';
+      cursor.style.height = '8px';
+    });
+  });
+</script>
+
+</body>
+</html>
